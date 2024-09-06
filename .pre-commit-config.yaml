@@ -1,0 +1,23 @@
+# .pre-commit-config.yaml
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v2.3.0
+    hooks:
+      - id: end-of-file-fixer
+      - id: trailing-whitespace
+  - repo: local
+    hooks:
+      - id: format-client
+        name: Format Client
+        entry: bash -c 'cd client && npm run format'
+        language: node
+        types: [javascript]
+        additional_dependencies: []
+        files: ^client/
+      - id: format-server
+        name: Format Server
+        entry: bash -c 'cd server && npm run format'
+        language: node
+        types: [javascript]
+        additional_dependencies: []
+        files: ^server/

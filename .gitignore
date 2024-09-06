@@ -1,0 +1,6 @@
+/.idea/
+!/cms/.env
+!/client/.env
+**/.env
+!/server/.env
+.DS_Store
