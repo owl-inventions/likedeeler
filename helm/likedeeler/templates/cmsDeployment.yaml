@@ -72,22 +72,22 @@ spec:
                   name: {{ include "likedeeler.shortName" . }}-secret
                   key: jwtSecret
             - name: DATABASE_CLIENT
-              value: {{ .Values.cms.config.databaseClient }}
+              value: "{{ .Values.cms.config.databaseClient }}"
             - name: DATABASE_HOST
-              value: {{ .Values.cms.config.databaseHost }}
+              value: "{{ .Values.cms.config.databaseHost }}"
             - name: DATABASE_NAME
-              value: {{ .Values.cms.config.databaseName }}
+              value: "{{ .Values.cms.config.databaseName }}"
             - name: DATABASE_PORT
-              value: {{ .Values.cms.config.databasePort }}
+              value: "{{ .Values.cms.config.databasePort }}"
             - name: DATABASE_USERNAME
-              value: {{ .Values.cms.config.databaseUsername }}
+              value: "{{ .Values.cms.config.databaseUsername }}"
             - name: DATABASE_SSL
-              value: {{ .Values.cms.config.databaseSsl }}
+              value: "{{ .Values.cms.config.databaseSsl }}"
             - name: AWS_REGION
-              value: {{ .Values.cms.config.awsRegion }}
+              value: "{{ .Values.cms.config.awsRegion }}"
             - name: AWS_BUCKET
-              value: {{ .Values.cms.config.awsBucket }}
+              value: "{{ .Values.cms.config.awsBucket }}"
             - name: CLOUDFRONT_BASE_URL
-              value: {{ .Values.cms.config.cloudfrontBaseUrl }}
+              value: "{{ .Values.cms.config.cloudfrontBaseUrl }}"
           resources:
             {{- toYaml .Values.cms.resources | nindent 12 }}
