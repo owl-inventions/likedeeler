@@ -23,7 +23,7 @@ export default ({ env }) => [
             `https://${env("AWS_BUCKET")}.s3.${env(
               "AWS_REGION"
             )}.amazonaws.com/`,
-            env("CDN_URL"),
+            env("CLOUDFRONT_BASE_URL"),
           ],
           "media-src": [
             "'self'",
@@ -33,7 +33,7 @@ export default ({ env }) => [
             `https://${env("AWS_BUCKET")}.s3.${env(
               "AWS_REGION"
             )}.amazonaws.com/`,
-            env("CDN_URL"),
+            env("CLOUDFRONT_BASE_URL"),
           ],
           upgradeInsecureRequests: null,
         },
