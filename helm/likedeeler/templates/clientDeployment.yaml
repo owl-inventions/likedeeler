@@ -1,0 +1,45 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "likedeeler.fullname" . }}-client
+spec:
+  replicas: {{ .Values.replicaCount }}
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 80%
+      maxUnavailable: 0
+  selector:
+    matchLabels:
+      {{- include "likedeeler.selectorLabels" . | nindent 6 }}-client
+  template:
+    metadata:
+      labels:
+        {{- include "likedeeler.selectorLabels" . | nindent 8 }}-client
+    spec:
+      {{- with .Values.imagePullSecrets }}
+      imagePullSecrets:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      containers:
+        - name: {{ .Chart.Name }}
+          image: "{{ .Values.client.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          ports:
+            - name: {{ .Values.client.service.name }}
+              containerPort: {{ .Values.client.service.port }}
+          livenessProbe:
+            httpGet:
+              path: {{ .Values.client.service.healthEndpoint }}
+              port: {{ .Values.client.service.port }}
+          readinessProbe:
+            httpGet:
+              path: {{ .Values.client.service.healthEndpoint }}
+              port: {{ .Values.client.service.port }}
+          startupProbe:
+            httpGet:
+              path: {{ .Values.client.service.healthEndpoint }}
+              port: {{ .Values.client.service.port }}
+            failureThreshold: 30
+          resources:
+            {{- toYaml .Values.client.resources | nindent 12 }}

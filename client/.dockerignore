@@ -1,0 +1,7 @@
+.metals
+.git
+dist
+node_modules
+.github
+**/node_modules
+**/dist

@@ -1,0 +1,68 @@
+name: to-k3s
+
+on:
+  workflow_call:
+    inputs:
+      namespace:
+        description: 'The namespace to deploy to'
+        type: string
+        required: true
+      cmsHost:
+        description: 'The host to use for the ingress'
+        type: string
+        required: true
+      clientHost:
+        description: 'The host to use for the ingress'
+        type: string
+        required: true
+      tag:
+        description: 'The tag to use for the image'
+        type: string
+        required: true
+      values:
+        description: 'The values file to use for the helm deployment'
+        type: string
+        required: true
+      release:
+        description: 'The release name to use for the helm deployment'
+        type: string
+        required: true
+      mode:
+        description: 'the environment to deploy to, either prod or staging'
+        type: string
+        required: true
+
+jobs:
+  to-k3s:
+    runs-on: self-hosted
+    container:
+      image: catthehacker/ubuntu:act-22.04
+    steps:
+      - uses: actions/checkout@v4
+      - name: install helm
+        run: |
+          curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3
+          chmod 700 get_helm.sh
+          ./get_helm.sh
+          mkdir -p ~/.kube
+      - name: setup helm
+        env:
+          KUBE_CONFIG_BASE64: ${{ inputs.mode == 'prod' && secrets.KUBE_CONFIG_BASE64_PRODUCTION || secrets.KUBE_CONFIG_BASE64 }}
+        run: |
+          echo "$KUBE_CONFIG_BASE64" | base64 -d > ~/.kube/config
+          cat ~/.kube/config
+          chmod 0600 ~/.kube/config
+          helm version --kubeconfig ~/.kube/config
+      - name: deploy to k3s
+        run: |
+          helm upgrade \
+            --kubeconfig ~/.kube/config \
+            --namespace ${{ inputs.namespace }} \
+            --install \
+            -f ${{ inputs.values }} \
+            --set "cms.ingress.hosts={${{ inputs.cmsHost }}}" \
+            --set "client.ingress.hosts={${{ inputs.clientHost }}}" \
+            --set image.tag=${{ inputs.tag }} \
+            --set cms.secrets.databaseUrl=${{ secrets.DATABASE_URL }} \
+            --set cms.secrets.jwtSecret=${{ secrets.JWT_SECRET }} \
+            ${{ inputs.release }} ./helm/adv-2024/

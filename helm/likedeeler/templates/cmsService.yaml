@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "likedeeler.fullname" . }}-cms
+spec:
+  ports:
+    - port: 80
+      targetPort: http
+      name: http
+  selector:
+    app.kubernetes.io/name: {{ include "likedeeler.shortName" . }}-cms
+    app.kubernetes.io/instance: {{ .Release.Name }}

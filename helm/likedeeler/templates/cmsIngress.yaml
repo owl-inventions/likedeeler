@@ -1,0 +1,31 @@
+{{- if .Values.ingress.enabled }}
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    ingress.kubernetes.io/ssl-redirect: "true"
+    cert-manager.io/cluster-issuer: letsencrypt-prod
+    traefik.ingress.kubernetes.io/router.middlewares: default-redirect-https@kubernetescrd
+  name: {{ include "likedeeler.fullname" . }}-cms
+spec:
+  ingressClassName: traefik
+  rules:
+  {{- range .Values.cms.ingress.hosts }}
+    - host: {{ . }}
+      http:
+        paths:
+          - backend:
+              service:
+                name: {{ include "likedeeler.fullname" $ }}-cms
+                port:
+                  name: http
+            path: /
+            pathType: Prefix
+  {{- end }}
+  tls:
+    - hosts:
+    {{- range .Values.cms.ingress.hosts }}
+        - {{ . }}
+    {{- end }}
+      secretName: {{ include "likedeeler.fullname" . }}-tls
+{{- end }}

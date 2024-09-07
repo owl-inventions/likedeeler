@@ -1,0 +1,78 @@
+# Default values for homepage.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+replicaCount: 1
+
+nameOverride: ""
+fullnameOverride: ""
+
+imagePullSecrets:
+  - name: "registry-jnhssg-de-registrycreds"
+  - name: "ecr-registrycreds"
+
+image:
+  repository: registry.jnhssg.de/strapi
+  pullPolicy: IfNotPresent
+  tag: ""
+
+probes:
+  startupProbe:
+    path: /health
+    failureThreshold: 30
+    periodSeconds: 2
+  livenessProbe:
+    path: /health
+    periodSeconds: 5
+  readinessProbe:
+    path: /health
+    periodSeconds: 5
+
+service:
+  name: http
+  port: 3000
+
+ingress:
+  enabled: true
+
+client:
+  image:
+    repository: registry.jnhssg.de/adv-2024-client
+    pullPolicy: IfNotPresent
+    tag: ""
+
+  service:
+    name: http
+    port: 80
+    healthEndpoint: /
+
+  ingress:
+    enabled: true
+
+  resources:
+    limits:
+      memory: 64Mi
+    requests:
+      cpu: 100m
+      memory: 32Mi
+
+cms:
+
+  resources:
+    limits:
+      memory: 512Mi
+    requests:
+      cpu: 100m
+      memory: 256Mi
+
+  image:
+    repository: registry.jnhssg.de/adv-2024-cms
+
+  service:
+    port: 4000
+    name: http
+    healthEndpoint: /healthy
+
+  secrets:
+    databaseUrl: ""
+    jwtSecret: ""

@@ -1,0 +1,45 @@
+name: Staging
+
+concurrency:
+  group: staging
+  cancel-in-progress: true
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+
+  client-upload-container:
+    secrets: inherit
+    uses: ./.github/workflows/sub-publish-client-image.yml
+    with:
+      tag: ${{ github.sha }}
+      app: likedeeler-client
+      file: client/staging.Dockerfile
+      context: client
+
+  cms-upload-container:
+    secrets: inherit
+    uses: ./.github/workflows/sub-publish-image.yml
+    with:
+      tag: ${{ github.sha }}
+      app: likedeeler-cms
+      file: cms/Dockerfile
+      context: cms
+
+#  deploy:
+#    needs:
+#      - client-upload-container
+#      - cms-upload-container
+#    secrets: inherit
+#    uses: ./.github/workflows/sub-deploy.yml
+#    with:
+#      namespace: likedeeler-test
+#      cmsHost: cms.likedeeler-test.kube.jnhssg.de
+#      clientHost: client.likedeeler-test.kube.jnhssg.de
+#      tag: ${{ github.sha }}
+#      values: helm/dev.values.yaml
+#      release: likedeeler-staging
+#      mode: staging
