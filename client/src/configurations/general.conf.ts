@@ -1,1 +1,1 @@
-export const VERSION = import.meta.env.VITE_VERSION
+export const VERSION = import.meta.env.VITE_VERSION ?? 'Development'
