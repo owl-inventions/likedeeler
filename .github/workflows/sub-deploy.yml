@@ -70,5 +70,5 @@ jobs:
             --set cms.secrets.databasePassword=${{ secrets.DATABASE_PASSWORD }} \
             --set cms.secrets.jwtSecret=${{ secrets.JWT_SECRET }} \
             --set cms.secrets.awsAccessKeyId=${{ secrets.AWS_ACCESS_KEY_ID }} \
-            --set cms.secrets.awsSecretAccessKey=${{ secrets.AWS_SECRET_ACCESS_KEY }} \
+            --set cms.secrets.awsSecretAccessKey=${{ secrets.AWS_ACCESS_SECRET }} \
             ${{ inputs.release }} ./helm/likedeeler/

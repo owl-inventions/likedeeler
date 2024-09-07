@@ -61,7 +61,7 @@ spec:
                 secretKeyRef:
                   name: {{ include "likedeeler.shortName" . }}-secret
                   key: awsAccessKeyId
-            - name: AWS_SECRET_ACCESS_KEY
+            - name: AWS_ACCESS_SECRET
               valueFrom:
                 secretKeyRef:
                   name: {{ include "likedeeler.shortName" . }}-secret
