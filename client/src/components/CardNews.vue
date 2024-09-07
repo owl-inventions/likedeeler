@@ -1,6 +1,6 @@
 <template>
   <router-link
-    :to="`/articles/${slug}`"
+    :to="`/articles/${article?.slug}`"
     class="card card-compact w-72 bg-neutral hover:bg-accent relative rounded-xl no-underline hover:shadow-2xl duration-300"
   >
     <CardNewsBadge :text="article?.category" additionalClasses="badge-secondary" />
@@ -25,7 +25,7 @@ import { defineComponent, ref } from 'vue'
 import { marked } from 'marked'
 import CardNewsBadge from '@/components/CardNewsBadge.vue'
 import type { ArticleAsThumbnail } from '@/types/strapi.types'
-import { getArticleThumbnailBySlug } from '@/services/strapi.service'
+import {getArticleThumbnailById, getArticleThumbnailBySlug} from '@/services/strapi.service'
 
 export default defineComponent({
   name: 'CardNews',
@@ -33,15 +33,15 @@ export default defineComponent({
     CardNewsBadge
   },
   props: {
-    slug: {
-      type: String,
+    id: {
+      type: Number,
       required: true
-    }
+    },
   },
   setup(props) {
     const article = ref<ArticleAsThumbnail>()
 
-    getArticleThumbnailBySlug(props.slug).then((data) => {
+    getArticleThumbnailById(props.id).then((data) => {
       data.content = <string>marked(data.content.substring(0, 100) + '...')
       article.value = data
     })

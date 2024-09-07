@@ -2,9 +2,9 @@
 import { defineComponent, onBeforeUnmount, onMounted } from 'vue'
 import { ref } from 'vue'
 import CardAbout from '@/components/CardAbout.vue'
-import { getFaqItems, listAllRecentArticlesSlugs } from '@/services/strapi.service'
+import {getFaqItems, listAllRecentArticles, listAllRecentArticlesSlugs} from '@/services/strapi.service'
 import CardNews from '@/components/CardNews.vue'
-import { type StrapiResponseFaq, type ArticleAsSlugRef } from '@/types/strapi.types'
+import {type StrapiResponseFaq, type ArticleAsSlugRef, type ArticleAsIdRef} from '@/types/strapi.types'
 
 export default defineComponent({
   name: 'HomeView',
@@ -17,10 +17,10 @@ export default defineComponent({
     let charIndex = 0
     let intervalId: number
 
-    const articles = ref<ArticleAsSlugRef[]>([])
+    const articles = ref<ArticleAsIdRef[]>([])
     const faqItems = ref<StrapiResponseFaq[]>([])
 
-    listAllRecentArticlesSlugs().then((data) => {
+    listAllRecentArticles().then((data) => {
       articles.value = data
     })
 
@@ -110,7 +110,7 @@ export default defineComponent({
         <h2 class="text-3xl font-bold mb-8">Latest News</h2>
         <div class="carousel w-full rounded-box">
           <div class="carousel-item" v-for="article in articles">
-            <CardNews :slug="article.slug"> </CardNews>
+            <CardNews :id="article.id" />
           </div>
         </div>
       </div>

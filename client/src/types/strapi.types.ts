@@ -2,6 +2,10 @@ export type ArticleAsSlugRef = {
   slug: string
 }
 
+export type ArticleAsIdRef = {
+  id: number
+}
+
 export type Image = {
   url: string
   width: number
@@ -47,6 +51,7 @@ export type FaqItem = {
 export type StrapiResponseArticles = {
   data: {
     attributes: ArticleAsSlugRef | ArticleAsThumbnail
+    id: number
   }[]
 }
 
