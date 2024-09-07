@@ -17,7 +17,7 @@
 <script>
 import { defineComponent } from 'vue'
 
-import {VERSION} from "@/configurations/general.conf";
+import { VERSION } from '@/configurations/general.conf'
 
 export default defineComponent({
   name: 'App',

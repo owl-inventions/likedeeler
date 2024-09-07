@@ -9,7 +9,10 @@
     </div>
     <div v-if="article">
       <div class="hero relative rounded-xl overflow-hidden">
-        <img :src="article.thumbnail.data.attributes.formats.medium.url" class="w-full h-64 object-cover" />
+        <img
+          :src="article.thumbnail.data.attributes.formats.medium.url"
+          class="w-full h-64 object-cover"
+        />
         <span class="badge badge-secondary absolute top-2 right-2">{{ article.category }}</span>
       </div>
       <div class="article-details mt-4 text-left">
@@ -24,7 +27,11 @@
       <div class="related-articles mt-12">
         <h3 class="text-2xl font-bold mb-4">Related News</h3>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-          <CardNews v-for="relatedArticle in relatedArticles" :key="relatedArticle.slug" :slug="relatedArticle.slug" />
+          <CardNews
+            v-for="relatedArticle in relatedArticles"
+            :key="relatedArticle.slug"
+            :slug="relatedArticle.slug"
+          />
         </div>
       </div>
     </div>
@@ -37,16 +44,16 @@
 <script lang="ts">
 import { defineComponent, ref, onMounted } from 'vue'
 import { useRoute } from 'vue-router'
-import type {Article, ArticleAsSlugRef} from '@/types/strapi.types'
+import type { Article, ArticleAsSlugRef } from '@/types/strapi.types'
 import { getArticleBySlug, listAllRecentArticlesSlugs } from '@/services/strapi.service'
 import BaseGallery from '@/components/BaseGallery.vue'
 import CardNews from '@/components/CardNews.vue'
 
 interface GalleryImage {
-  largeURL: string;
-  thumbnailURL: string;
-  width: number;
-  height: number;
+  largeURL: string
+  thumbnailURL: string
+  width: number
+  height: number
 }
 
 export default defineComponent({
@@ -66,7 +73,7 @@ export default defineComponent({
       getArticleBySlug(slug).then((data) => {
         article.value = data
         if (data && data.images && data.images.data) {
-          galleryImages.value = data.images.data.map(image => ({
+          galleryImages.value = data.images.data.map((image) => ({
             largeURL: image.attributes.formats.large.url,
             thumbnailURL: image.attributes.formats.small.url,
             width: image.attributes.formats.large.width,
@@ -76,7 +83,7 @@ export default defineComponent({
       })
 
       listAllRecentArticlesSlugs().then((data) => {
-        relatedArticles.value = data.filter(relatedArticle => relatedArticle.slug)
+        relatedArticles.value = data.filter((relatedArticle) => relatedArticle.slug)
       })
     })
 
