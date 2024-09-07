@@ -4,7 +4,7 @@ FROM node:20-alpine AS build
 ARG NODE_ENV=production
 
 # Installing libvips-dev for sharp Compatibility
-RUN apk update && apk add --no-cache chromium build-base gcc autoconf automake zlib-dev libpng-dev vips-dev && rm -rf /var/cache/apk/* > /dev/null 2>&1
+RUN apk update && apk add --no-cache chromium build-base gcc autoconf automake zlib-dev libpng-dev vips-dev git && rm -rf /var/cache/apk/* > /dev/null 2>&1
 ENV CHROME_BIN="/usr/bin/chromium-browser" \
     PUPPETEER_SKIP_CHROMIUM_DOWNLOAD="true"
 
@@ -12,15 +12,16 @@ ENV CHROME_BIN="/usr/bin/chromium-browser" \
 ENV NODE_ENV=${NODE_ENV}
 WORKDIR /opt/
 COPY ./package.json ./package-lock.json ./
+RUN npm install -g node-gyp
 ENV PATH /opt/node_modules/.bin:$PATH
-RUN npm install --production
+RUN npm ci
 WORKDIR /opt/app
 
 COPY ./ .
 RUN npm run build
 
 
-FROM node:18-alpine
+FROM node:20-alpine
 
 # Installing libvips-dev for sharp Compatibility
 RUN apk add --no-cache vips-dev chromium

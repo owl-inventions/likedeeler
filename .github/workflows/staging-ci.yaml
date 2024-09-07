@@ -22,7 +22,7 @@ jobs:
 
   cms-upload-container:
     secrets: inherit
-    uses: ./.github/workflows/sub-publish-image.yml
+    uses: ./.github/workflows/sub-publish-cms-image.yml
     with:
       tag: ${{ github.sha }}
       app: likedeeler-cms
