@@ -14,10 +14,3 @@ repos:
         types: [javascript]
         additional_dependencies: []
         files: ^client/
-      - id: format-server
-        name: Format Server
-        entry: bash -c 'cd server && npm run format'
-        language: node
-        types: [javascript]
-        additional_dependencies: []
-        files: ^server/
