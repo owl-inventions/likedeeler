@@ -1,7 +1,7 @@
 # build stage
 FROM node:20-alpine AS build-stage
 
-ARG NODE_ENV=production
+ARG NODE_ENV=staging
 ENV NODE_ENV=${NODE_ENV}
 
 ARG VITE_VERSION
