@@ -37,7 +37,7 @@ ingress:
 
 client:
   image:
-    repository: registry.jnhssg.de/adv-2024-client
+    repository: registry.jnhssg.de/likedeeler-client
     pullPolicy: IfNotPresent
     tag: ""
 
@@ -66,13 +66,31 @@ cms:
       memory: 256Mi
 
   image:
-    repository: registry.jnhssg.de/adv-2024-cms
+    repository: registry.jnhssg.de/likedeeler-cms
 
   service:
-    port: 4000
+    host: 0.0.0.0
+    port: 1337
     name: http
-    healthEndpoint: /healthy
+    healthEndpoint: /health
+
+  config:
+    databaseClient: postgres
+    databaseHost: acadia.jnhssg.de
+    databasePort: 5432
+    databaseName: likedeeler-strapi-dev
+    databaseUsername: likedeeler-strapi
+    databaseSsl: false
+    awsRegion: eu-central-1
+    awsBucket: likedeeler-strapi-dev
+    cloudfrontBaseUrl: https://d1v5z1j7v7z1j.cloudfront.net
 
   secrets:
-    databaseUrl: ""
+    appKeys: ""
+    apiTokenSalt: ""
+    adminJwtSecret: ""
+    transferTokenSalt: ""
+    databasePassword: ""
     jwtSecret: ""
+    awsAccessKeyId: ""
+    awsSecretAccessKey: ""

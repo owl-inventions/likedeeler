@@ -29,17 +29,17 @@ jobs:
       file: cms/Dockerfile
       context: cms
 
-#  deploy:
-#    needs:
-#      - client-upload-container
-#      - cms-upload-container
-#    secrets: inherit
-#    uses: ./.github/workflows/sub-deploy.yml
-#    with:
-#      namespace: likedeeler-test
-#      cmsHost: cms.likedeeler-test.kube.jnhssg.de
-#      clientHost: client.likedeeler-test.kube.jnhssg.de
-#      tag: ${{ github.sha }}
-#      values: helm/dev.values.yaml
-#      release: likedeeler-staging
-#      mode: staging
+  deploy:
+    needs:
+      - client-upload-container
+      - cms-upload-container
+    secrets: inherit
+    uses: ./.github/workflows/sub-deploy.yml
+    with:
+      namespace: likedeeler-test
+      cmsHost: cms.likedeeler-test.kube.jnhssg.de
+      clientHost: client.likedeeler-test.kube.jnhssg.de
+      tag: ${{ github.sha }}
+      values: helm/dev.values.yaml
+      release: likedeeler-staging
+      mode: staging

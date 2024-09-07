@@ -60,9 +60,15 @@ jobs:
             --namespace ${{ inputs.namespace }} \
             --install \
             -f ${{ inputs.values }} \
+            --set image.tag=${{ inputs.tag }} \
             --set "cms.ingress.hosts={${{ inputs.cmsHost }}}" \
             --set "client.ingress.hosts={${{ inputs.clientHost }}}" \
-            --set image.tag=${{ inputs.tag }} \
-            --set cms.secrets.databaseUrl=${{ secrets.DATABASE_URL }} \
+            --set cms.secrets.appKeys=${{ secrets.APP_KEYS }} \
+            --set cms.secrets.apiTokenSalt=${{ secrets.API_TOKEN_SALT }} \
+            --set cms.secrets.adminJwtSecret=${{ secrets.ADMIN_JWT_SECRET }} \
+            --set cms.secrets.transferTokenSalt=${{ secrets.TRANSFER_TOKEN_SALT }} \
+            --set cms.secrets.databasePassword=${{ secrets.DATABASE_PASSWORD }} \
             --set cms.secrets.jwtSecret=${{ secrets.JWT_SECRET }} \
-            ${{ inputs.release }} ./helm/adv-2024/
+            --set cms.secrets.awsAccessKeyId=${{ secrets.AWS_ACCESS_KEY_ID }} \
+            --set cms.secrets.awsSecretAccessKey=${{ secrets.AWS_SECRET_ACCESS_KEY }} \
+            ${{ inputs.release }} ./helm/likedeeler/
