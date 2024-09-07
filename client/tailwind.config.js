@@ -1,4 +1,7 @@
 /** @type {import('tailwindcss').Config} */
+
+import tailwind_theme from 'tailwindcss/defaultTheme'
+
 export default {
   content: [
     "./index.html",
@@ -7,7 +10,9 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['Lato', 'Arial', 'sans-serif'],
+        sans: ['Merriweather', ...tailwind_theme.fontFamily.sans],
+        serif: ['Merriweather', ...tailwind_theme.fontFamily.serif],
+        mono: ['Merriweather', ...tailwind_theme.fontFamily.mono],
       },
       colors: {
         // primary: '#ffb783',

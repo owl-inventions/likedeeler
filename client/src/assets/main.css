@@ -1,17 +1,65 @@
-@font-face {
-  font-family: 'Lato';
-  src: url('@/assets/fonts/Lato/Lato-Regular.ttf') format('truetype');
-  font-weight: normal;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'Lato';
-  src: url('@/assets/fonts/Lato/Lato-Bold.ttf') format('truetype');
-  font-weight: bold;
-  font-style: normal;
-}
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  @font-face {
+    font-family: 'Merriweather';
+    src: url('@/assets/fonts/Merriweather/Merriweather-Regular.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: 'Merriweather';
+    src: url('@/assets/fonts/Merriweather/Merriweather-Bold.woff2') format('woff2');
+    font-weight: bold;
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: 'Merriweather';
+    src: url('@/assets/fonts/Merriweather/Merriweather-Italic.woff2') format('woff2');
+    font-weight: normal;
+    font-style: italic;
+  }
+
+  @font-face {
+    font-family: 'Merriweather';
+    src: url('@/assets/fonts/Merriweather/Merriweather-BoldItalic.woff2') format('woff2');
+    font-weight: bold;
+    font-style: italic;
+  }
+
+  @font-face {
+    font-family: 'Merriweather';
+    src: url('@/assets/fonts/Merriweather/Merriweather-Light.woff2') format('woff2');
+    font-weight: 300;
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: 'Merriweather';
+    src: url('@/assets/fonts/Merriweather/Merriweather-LightItalic.woff2') format('woff2');
+    font-weight: 300;
+    font-style: italic;
+  }
+
+  @font-face {
+    font-family: 'Merriweather';
+    src: url('@/assets/fonts/Merriweather/Merriweather-Black.woff2') format('woff2');
+    font-weight: 900;
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: 'Merriweather';
+    src: url('@/assets/fonts/Merriweather/Merriweather-BlackItalic.woff2') format('woff2');
+    font-weight: 900;
+    font-style: italic;
+  }
+
+  html {
+    font-family: 'Merriweather', system-ui, sans-serif;
+  }
+}
