@@ -14,31 +14,17 @@ export default ({ env }) => [
     config: {
       contentSecurityPolicy: {
         directives: {
-          "connect-src": ["'self'", "https:"],
-          "img-src": [
+          'img-src': [
             "'self'",
             "data:",
             "blob:",
             "dl.airtable.com",
-            `https://${env("AWS_BUCKET")}.s3.${env(
-              "AWS_REGION"
-            )}.amazonaws.com/`,
-            env("CLOUDFRONT_BASE_URL"),
+            "https://likedeeler-strapi-dev.s3.eu-central-1.amazonaws.com/",
+            "https://d1v5z1j7v7z1j.cloudfront.net",
+            "https://d2wplaacghaca4.cloudfront.net"
           ],
-          "media-src": [
-            "'self'",
-            "data:",
-            "blob:",
-            "dl.airtable.com",
-            `https://${env("AWS_BUCKET")}.s3.${env(
-              "AWS_REGION"
-            )}.amazonaws.com/`,
-            env("CLOUDFRONT_BASE_URL"),
-          ],
-          upgradeInsecureRequests: null,
         },
       },
     },
   },
 ];
-
