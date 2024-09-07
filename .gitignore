@@ -2,5 +2,10 @@
 !/cms/.env
 !/client/.env
 **/.env
+**/.env.local
+**/.env.development
+**/.env.test
+**/.env.production
+**/.env.staging
 !/server/.env
 .DS_Store

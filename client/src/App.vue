@@ -1,24 +1,36 @@
 <template>
   <router-view />
+  <footer class="footer p-10 text-neutral-content">
+    <div>
+      <span class="footer-title">Links</span>
+      <a href="/impressum" class="link link-hover">Impressum</a>
+      <a href="/privacy" class="link link-hover">Privacy Policy</a>
+    </div>
+    <div class="divider"></div>
+    <div class="mt-4">
+      <p>Made with <span style="color: #e25555">&#9829;</span> in Rostock.</p>
+      <p class="text-gray-500">{{ VERSION }}</p>
+    </div>
+  </footer>
 </template>
 
 <script>
-import {defineComponent} from "vue";
+import { defineComponent } from 'vue'
+
+import {VERSION} from "@/configurations/general.conf";
 
 export default defineComponent({
   name: 'App',
   setup() {
-    return {};
-  },
-});
+    return {
+      VERSION
+    }
+  }
+})
 </script>
 
 <style>
 body {
   font-family: 'Lato', sans-serif;
-  h1, h2, h3, h4, h5, h6 {
-    font-family: 'Lato', sans-serif;
-    cursor: default;
-  }
 }
 </style>

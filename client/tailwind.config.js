@@ -10,17 +10,17 @@ export default {
         sans: ['Lato', 'Arial', 'sans-serif'],
       },
       colors: {
-        primary: '#ffb783',
-        secondary: '#dc1515',
-        tertiary: '#f5f5f5',
-        accent: '#ff8e3c',
-        paragraph: '#333333',
+        // primary: '#ffb783',
+        // secondary: '#dc1515',
+        // tertiary: '#f5f5f5',
+        // accent: '#ff8e3c',
+        // paragraph: '#333333',
       },
     },
   },
   plugins: [require('daisyui')],
   daisyui: {
-    themes: ["dark"],
+    themes: ["coffee"],
     logs: false,
   },
 }
