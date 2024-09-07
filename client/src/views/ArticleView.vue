@@ -14,7 +14,7 @@
           :alt="article.thumbnail.data.attributes.formats.medium.hash"
           class="w-full h-64 object-cover"
         />
-        <CardNewsBadge :text="article.category"/>
+        <CardNewsBadge :text="article.category" />
       </div>
       <div class="article-details mt-4 text-left">
         <span class="text-gray-500">{{ article.date }}</span>
@@ -28,7 +28,11 @@
       <div class="related-articles mt-12">
         <h3 class="text-2xl font-bold mb-4">Related News</h3>
         <div class="carousel w-full">
-          <div class="carousel-item" v-for="relatedArticle in relatedArticles" :key="relatedArticle.slug">
+          <div
+            class="carousel-item"
+            v-for="relatedArticle in relatedArticles"
+            :key="relatedArticle.slug"
+          >
             <CardNews :slug="relatedArticle.slug"> </CardNews>
           </div>
         </div>
@@ -48,7 +52,7 @@ import type { Article, ArticleAsSlugRef } from '@/types/strapi.types'
 import { getArticleBySlug, listAllRecentArticlesSlugs } from '@/services/strapi.service'
 import BaseGallery from '@/components/BaseGallery.vue'
 import CardNews from '@/components/CardNews.vue'
-import CardNewsBadge from "@/components/CardNewsBadge.vue";
+import CardNewsBadge from '@/components/CardNewsBadge.vue'
 
 interface GalleryImage {
   largeURL: string

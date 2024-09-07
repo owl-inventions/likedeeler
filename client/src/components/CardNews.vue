@@ -5,7 +5,11 @@
   >
     <CardNewsBadge :text="article?.category" additionalClasses="badge-secondary" />
     <figure class="image-wrapper">
-      <img :src="article?.thumbnail.data.attributes.formats.medium.url" class="image-content" :alt="article?.thumbnail.data.attributes.formats.medium.hash"/>
+      <img
+        :src="article?.thumbnail.data.attributes.formats.medium.url"
+        class="image-content"
+        :alt="article?.thumbnail.data.attributes.formats.medium.hash"
+      />
     </figure>
     <div class="card-body rounded-b text-left">
       <span class="text-gray-500">{{ article?.date }}</span>
@@ -50,6 +54,9 @@ export default defineComponent({
 </script>
 
 <style scoped>
+.card {
+  aspect-ratio: 16/9;
+}
 .image-wrapper {
   position: relative;
   width: 100%;

@@ -377,7 +377,9 @@ export interface ApiArticleArticle extends Schema.CollectionType {
     title: Attribute.String & Attribute.Required;
     description: Attribute.String;
     content: Attribute.RichText & Attribute.Required;
-    category: Attribute.Enumeration<['Tournament', 'Social', 'Training']> &
+    category: Attribute.Enumeration<
+      ['Tournament', 'Social', 'Training', 'Announcement']
+    > &
       Attribute.Required;
     date: Attribute.Date & Attribute.Required;
     thumbnail: Attribute.Media<'images' | 'files' | 'videos' | 'audios'> &

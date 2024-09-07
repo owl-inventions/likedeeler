@@ -1,19 +1,13 @@
 import { strapiClient } from '@/utils/axios/strapi.client'
-import type {Article, ArticleAsSlugRef, ArticleAsThumbnail, FaqItem} from '@/types/strapi.types'
+import type {
+  Article,
+  ArticleAsSlugRef,
+  ArticleAsThumbnail,
+  FaqItem,
+  StrapiResponseArticles,
+  StrapiResponseFaq
+} from '@/types/strapi.types'
 import type { AxiosResponse } from 'axios'
-
-type StrapiResponseArticles = {
-  data: {
-    attributes: ArticleAsSlugRef | ArticleAsThumbnail
-  }[]
-}
-
-type StrapiResponseFaq = {
-    data: {
-        id: number;
-        attributes: FaqItem;
-    }[]
-}
 
 export async function listAllRecentArticlesSlugs(): Promise<ArticleAsSlugRef[]> {
   const response: AxiosResponse<StrapiResponseArticles> = await strapiClient.get(
@@ -60,6 +54,6 @@ export async function getArticleBySlug(slug: string): Promise<Article> {
 }
 
 export async function getFaqItems(): Promise<StrapiResponseFaq[]> {
-    const response: AxiosResponse<StrapiResponseFaq> = await strapiClient.get('/api/faqs')
-    return response.data.data
+  const response: AxiosResponse<any> = await strapiClient.get('/api/faqs')
+  return response.data.data as StrapiResponseFaq[]
 }

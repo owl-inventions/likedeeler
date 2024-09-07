@@ -43,3 +43,14 @@ export type FaqItem = {
   question: string
   answer: string
 }
+
+export type StrapiResponseArticles = {
+  data: {
+    attributes: ArticleAsSlugRef | ArticleAsThumbnail
+  }[]
+}
+
+export type StrapiResponseFaq = {
+  id: number
+  attributes: FaqItem
+}

@@ -2,9 +2,9 @@
 import { defineComponent, onBeforeUnmount, onMounted } from 'vue'
 import { ref } from 'vue'
 import CardAbout from '@/components/CardAbout.vue'
-import {getFaqItems, listAllRecentArticlesSlugs} from '@/services/strapi.service'
+import { getFaqItems, listAllRecentArticlesSlugs } from '@/services/strapi.service'
 import CardNews from '@/components/CardNews.vue'
-import { type FaqItem, type ArticleAsSlugRef } from '@/types/strapi.types'
+import { type StrapiResponseFaq, type ArticleAsSlugRef } from '@/types/strapi.types'
 
 export default defineComponent({
   name: 'HomeView',
@@ -26,7 +26,6 @@ export default defineComponent({
 
     getFaqItems().then((data) => {
       faqItems.value = data
-      console.log(data)
     })
 
     const eraseText = () => {
@@ -120,8 +119,9 @@ export default defineComponent({
       <div class="container mx-auto text-center">
         <h2 class="text-3xl font-bold mb-8">About Us</h2>
         <p class="text-lg">
-          Likedeeler is the vibrant and well established community in Rostock, fostering the sport of Jugger with
-          passion and enthusiasm. You can find us at the University Rostock and HSG Uni Rostock e.V.
+          Likedeeler is the vibrant and well established community in Rostock, fostering the sport
+          of Jugger with passion and enthusiasm. You can find us at the University Rostock and HSG
+          Uni Rostock e.V.
         </p>
         <div class="flex flex-wrap justify-center space-x-0 sm:space-x-4 mt-8">
           <CardAbout
@@ -146,7 +146,12 @@ export default defineComponent({
     <!-- New About Jugger section -->
     <section id="about-jugger" class="py-20">
       <div class="container mx-auto text-center">
-        <div class="collapse collapse-arrow bg-base-200" v-for="(faq, index) in faqItems" :key="faq.id">
+        <div
+          class="collapse collapse-arrow bg-base-200"
+          v-for="(faq, index) in faqItems"
+          :key="faq.id"
+          aria-labelledby="faq"
+        >
           <input type="radio" name="faq" :checked="index === 0" />
           <div class="collapse-title text-xl font-bold">
             {{ faq.attributes.question }}
