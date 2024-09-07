@@ -374,14 +374,16 @@ export interface ApiArticleArticle extends Schema.CollectionType {
     draftAndPublish: true;
   };
   attributes: {
-    title: Attribute.String;
+    title: Attribute.String & Attribute.Required;
     description: Attribute.String;
-    content: Attribute.RichText;
-    category: Attribute.Enumeration<['Tournament', 'Social', 'Training']>;
-    date: Attribute.Date;
-    thumbnail: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    content: Attribute.RichText & Attribute.Required;
+    category: Attribute.Enumeration<['Tournament', 'Social', 'Training']> &
+      Attribute.Required;
+    date: Attribute.Date & Attribute.Required;
+    thumbnail: Attribute.Media<'images' | 'files' | 'videos' | 'audios'> &
+      Attribute.Required;
     images: Attribute.Media<'images' | 'files' | 'videos' | 'audios', true>;
-    slug: Attribute.UID<'api::article.article', 'title'>;
+    slug: Attribute.UID<'api::article.article', 'title'> & Attribute.Required;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

@@ -13,13 +13,16 @@
   "pluginOptions": {},
   "attributes": {
     "title": {
-      "type": "string"
+      "type": "string",
+      "required": true
     },
     "description": {
-      "type": "string"
+      "type": "string",
+      "required": false
     },
     "content": {
-      "type": "richtext"
+      "type": "richtext",
+      "required": true
     },
     "category": {
       "type": "enumeration",
@@ -27,15 +30,17 @@
         "Tournament",
         "Social",
         "Training"
-      ]
+      ],
+      "required": true
     },
     "date": {
-      "type": "date"
+      "type": "date",
+      "required": true
     },
     "thumbnail": {
       "type": "media",
       "multiple": false,
-      "required": false,
+      "required": true,
       "allowedTypes": [
         "images",
         "files",
@@ -56,7 +61,8 @@
     },
     "slug": {
       "type": "uid",
-      "targetField": "title"
+      "targetField": "title",
+      "required": true
     }
   }
 }
