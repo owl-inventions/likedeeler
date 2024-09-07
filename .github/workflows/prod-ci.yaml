@@ -50,7 +50,7 @@ jobs:
     secrets: inherit
     uses: ./.github/workflows/sub-deploy.yml
     with:
-      namespace: likedeeler-test
+      namespace: likedeeler
       cmsHost: cms.likedeeler.kube.jnhssg.de
       clientHost: client.likedeeler.kube.jnhssg.de
       tag: ${{ needs.get_version.outputs.version }}
