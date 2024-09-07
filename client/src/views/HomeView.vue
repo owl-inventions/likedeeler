@@ -117,11 +117,8 @@ export default defineComponent({
     </section>
     <section id="about" class="py-20 bg-base-300">
       <div class="container mx-auto text-center">
-        <h2 class="text-3xl font-bold mb-8">About Us</h2>
         <p class="text-lg">
-          Likedeeler is the vibrant and well established community in Rostock, fostering the sport
-          of Jugger with passion and enthusiasm. You can find us at the University Rostock and HSG
-          Uni Rostock e.V.
+          Likedeeler is a vibrant and well-established community in Rostock, passionately promoting the sport of Jugger. You can find us at the University of Rostock and HSG Uni Rostock e.V.
         </p>
         <div class="flex flex-wrap justify-center space-x-0 sm:space-x-4 mt-8">
           <CardAbout

@@ -25,13 +25,13 @@
           <BaseGallery :galleryID="'article-gallery'" :images="galleryImages" />
         </div>
       </div>
-      <div class="related-articles mt-12">
+      <div class="related-articles mt-12 mb-12">
         <h3 class="text-2xl font-bold mb-4">Related News</h3>
         <div class="carousel w-full">
           <div
             class="carousel-item"
             v-for="relatedArticle in relatedArticles"
-            :key="relatedArticle.slug"
+            :key="relatedArticle.id"
           >
             <CardNews :id="relatedArticle.id"> </CardNews>
           </div>

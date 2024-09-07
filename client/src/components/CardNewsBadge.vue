@@ -1,5 +1,5 @@
 <template>
-  <span :class="['badge', 'text-white', badgeColor, additionalClasses]">{{ text }}</span>
+  <span :class="['badge', badgeColor, 'text-white', additionalClasses]">{{ text }}</span>
 </template>
 
 <script lang="ts">
@@ -22,15 +22,15 @@ export default defineComponent({
     const badgeColor = computed(() => {
       switch (props.text) {
         case 'Tournament':
-          return 'bg-red-500'
+          return 'badge-error'
         case 'Announcement':
-          return 'bg-orange-500'
+          return 'badge-success'
         case 'Training':
-          return 'bg-blue-500'
+          return 'badge-info'
         case 'Social':
-          return 'bg-green-200'
+          return 'badge-accent'
         default:
-          return 'bg-neutral'
+          return 'badge-neutral'
       }
     })
 
