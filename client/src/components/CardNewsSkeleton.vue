@@ -6,6 +6,7 @@
       <div class="skeleton-text skeleton-title"></div>
       <div class="skeleton-text skeleton-date"></div>
       <div class="skeleton-text skeleton-description"></div>
+      <div class="skeleton-text skeleton-content"></div>
     </div>
   </div>
 </template>
@@ -37,5 +38,9 @@ export default defineComponent({
 }
 .skeleton-description {
   width: 90%;
+}
+.skeleton-content {
+  width: 100%;
+  height: 5em;
 }
 </style>
