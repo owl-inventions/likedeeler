@@ -24,15 +24,10 @@ RUN npm run build
 FROM node:20-alpine
 
 # Installing libvips-dev for sharp Compatibility
-RUN apk add --no-cache vips-dev chromium
-ENV CHROME_BIN="/usr/bin/chromium-browser" \
-    PUPPETEER_SKIP_CHROMIUM_DOWNLOAD="true"
-RUN rm -rf /var/cache/apk/*
-ARG NODE_ENV=production
-ENV NODE_ENV=${NODE_ENV}
+RUN apk add --no-cache vips-dev
+ENV NODE_ENV=production
 WORKDIR /opt/app
 COPY --from=build /opt/node_modules ./node_modules
-ENV PATH=/opt/node_modules/.bin:$PATH
 COPY --from=build /opt/app ./
 EXPOSE 1337
 
