@@ -29,7 +29,8 @@
       "enum": [
         "Tournament",
         "Social",
-        "Training"
+        "Training",
+        "Announcement"
       ],
       "required": true
     },

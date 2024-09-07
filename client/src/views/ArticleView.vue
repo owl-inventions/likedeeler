@@ -11,9 +11,10 @@
       <div class="hero relative rounded-xl overflow-hidden">
         <img
           :src="article.thumbnail.data.attributes.formats.medium.url"
+          :alt="article.thumbnail.data.attributes.formats.medium.hash"
           class="w-full h-64 object-cover"
         />
-        <span class="badge badge-secondary absolute top-2 right-2">{{ article.category }}</span>
+        <CardNewsBadge :text="article.category"/>
       </div>
       <div class="article-details mt-4 text-left">
         <span class="text-gray-500">{{ article.date }}</span>
@@ -26,12 +27,10 @@
       </div>
       <div class="related-articles mt-12">
         <h3 class="text-2xl font-bold mb-4">Related News</h3>
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-          <CardNews
-            v-for="relatedArticle in relatedArticles"
-            :key="relatedArticle.slug"
-            :slug="relatedArticle.slug"
-          />
+        <div class="carousel w-full">
+          <div class="carousel-item" v-for="relatedArticle in relatedArticles" :key="relatedArticle.slug">
+            <CardNews :slug="relatedArticle.slug"> </CardNews>
+          </div>
         </div>
       </div>
     </div>
@@ -44,10 +43,12 @@
 <script lang="ts">
 import { defineComponent, ref, onMounted } from 'vue'
 import { useRoute } from 'vue-router'
+import { marked } from 'marked'
 import type { Article, ArticleAsSlugRef } from '@/types/strapi.types'
 import { getArticleBySlug, listAllRecentArticlesSlugs } from '@/services/strapi.service'
 import BaseGallery from '@/components/BaseGallery.vue'
 import CardNews from '@/components/CardNews.vue'
+import CardNewsBadge from "@/components/CardNewsBadge.vue";
 
 interface GalleryImage {
   largeURL: string
@@ -59,6 +60,7 @@ interface GalleryImage {
 export default defineComponent({
   name: 'ArticleView',
   components: {
+    CardNewsBadge,
     BaseGallery,
     CardNews
   },
@@ -71,7 +73,10 @@ export default defineComponent({
     onMounted(() => {
       const slug = route.params.slug as string
       getArticleBySlug(slug).then((data) => {
-        article.value = data
+        if (data) {
+          data.content = <string>marked(data.content)
+          article.value = data
+        }
         if (data && data.images && data.images.data) {
           galleryImages.value = data.images.data.map((image) => ({
             largeURL: image.attributes.formats.large.url,
@@ -100,10 +105,5 @@ export default defineComponent({
 .hero {
   position: relative;
   height: 16rem;
-}
-.badge-secondary {
-  position: absolute;
-  top: 0.5rem;
-  right: 0.5rem;
 }
 </style>

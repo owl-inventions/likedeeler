@@ -1,6 +1,6 @@
 <template>
   <router-view />
-  <footer class="footer p-10 text-neutral-content">
+  <footer class="footer p-10 text-neutral-content bg-base-300">
     <div>
       <span class="footer-title">Links</span>
       <a href="/impressum" class="link link-hover">Impressum</a>
@@ -30,7 +30,4 @@ export default defineComponent({
 </script>
 
 <style>
-body {
-  font-family: 'Lato', sans-serif;
-}
 </style>

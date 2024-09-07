@@ -1,11 +1,18 @@
 import { strapiClient } from '@/utils/axios/strapi.client'
-import type { Article, ArticleAsSlugRef, ArticleAsThumbnail } from '@/types/strapi.types'
+import type {Article, ArticleAsSlugRef, ArticleAsThumbnail, FaqItem} from '@/types/strapi.types'
 import type { AxiosResponse } from 'axios'
 
 type StrapiResponseArticles = {
   data: {
     attributes: ArticleAsSlugRef | ArticleAsThumbnail
   }[]
+}
+
+type StrapiResponseFaq = {
+    data: {
+        id: number;
+        attributes: FaqItem;
+    }[]
 }
 
 export async function listAllRecentArticlesSlugs(): Promise<ArticleAsSlugRef[]> {
@@ -22,7 +29,7 @@ export async function listAllRecentArticlesSlugs(): Promise<ArticleAsSlugRef[]> 
 }
 
 export async function getArticleThumbnailBySlug(slug: string): Promise<ArticleAsThumbnail> {
-  const response = await strapiClient.get(`/api/articles?slug=${slug}`, {
+  const response = await strapiClient.get(`/api/articles?filters[slug][$eq]=${slug}`, {
     params: {
       'fields[0]': 'slug',
       'fields[1]': 'title',
@@ -37,7 +44,7 @@ export async function getArticleThumbnailBySlug(slug: string): Promise<ArticleAs
 }
 
 export async function getArticleBySlug(slug: string): Promise<Article> {
-  const response = await strapiClient.get(`/api/articles?slug=${slug}`, {
+  const response = await strapiClient.get(`/api/articles?filters[slug][$eq]=${slug}`, {
     params: {
       'fields[0]': 'slug',
       'fields[1]': 'title',
@@ -49,7 +56,10 @@ export async function getArticleBySlug(slug: string): Promise<Article> {
       'populate[images]': 'images'
     }
   })
-
-  console.log(response.data.data[0].attributes)
   return response.data.data[0].attributes as Article
+}
+
+export async function getFaqItems(): Promise<StrapiResponseFaq[]> {
+    const response: AxiosResponse<StrapiResponseFaq> = await strapiClient.get('/api/faqs')
+    return response.data.data
 }

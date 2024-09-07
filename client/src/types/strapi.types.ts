@@ -38,3 +38,8 @@ export type Article = ArticleAsThumbnail & {
     data: StrapiImage[]
   }
 }
+
+export type FaqItem = {
+  question: string
+  answer: string
+}

@@ -1,6 +1,8 @@
 <template>
-  <router-link
-    :to="buttonLink"
+  <a
+    :href="buttonLink"
+    target="_blank"
+    rel="noopener noreferrer"
     class="card card-compact w-full sm:w-72 lg:w-96 mb-4 bg-neutral hover:bg-accent duration-300 no-underline"
   >
     <figure><img :src="imageSrc" :alt="imageAlt" class="w-full h-96 object-cover" /></figure>
@@ -8,7 +10,7 @@
       <p class="card-title">{{ title }}</p>
       <p class="text-neutral-content">{{ description }}</p>
     </div>
-  </router-link>
+  </a>
 </template>
 
 <script lang="ts">

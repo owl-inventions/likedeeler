@@ -2,25 +2,31 @@
 import { defineComponent, onBeforeUnmount, onMounted } from 'vue'
 import { ref } from 'vue'
 import CardAbout from '@/components/CardAbout.vue'
-import { listAllRecentArticlesSlugs } from '@/services/strapi.service'
+import {getFaqItems, listAllRecentArticlesSlugs} from '@/services/strapi.service'
 import CardNews from '@/components/CardNews.vue'
-import { type ArticleAsSlugRef } from '@/types/strapi.types'
+import { type FaqItem, type ArticleAsSlugRef } from '@/types/strapi.types'
 
 export default defineComponent({
   name: 'HomeView',
   components: { CardNews, CardAbout },
   setup() {
     const text = ref('')
-    const texts = ['based in Rostock', 'for Humans']
+    const texts = ['based in Rostock', 'for everyone', 'with passion']
     let fullText = texts[0]
     let index = 0
     let charIndex = 0
     let intervalId: number
 
     const articles = ref<ArticleAsSlugRef[]>([])
+    const faqItems = ref<StrapiResponseFaq[]>([])
 
     listAllRecentArticlesSlugs().then((data) => {
       articles.value = data
+    })
+
+    getFaqItems().then((data) => {
+      faqItems.value = data
+      console.log(data)
     })
 
     const eraseText = () => {
@@ -59,7 +65,8 @@ export default defineComponent({
 
     return {
       text,
-      articles
+      articles,
+      faqItems
     }
   },
   mounted() {
@@ -102,8 +109,8 @@ export default defineComponent({
     <section id="news" class="py-20">
       <div class="container mx-auto text-center">
         <h2 class="text-3xl font-bold mb-8">Latest News</h2>
-        <div class="carousel rounded-box">
-          <div class="carousel-item" v-for="article in articles" :key="article.slug">
+        <div class="carousel w-full rounded-box">
+          <div class="carousel-item" v-for="article in articles">
             <CardNews :slug="article.slug"> </CardNews>
           </div>
         </div>
@@ -113,8 +120,8 @@ export default defineComponent({
       <div class="container mx-auto text-center">
         <h2 class="text-3xl font-bold mb-8">About Us</h2>
         <p class="text-lg">
-          Jugger Likedeeler is the vibrant community in Rostock, fostering the sport of Jugger with
-          passion and enthusiasm.
+          Likedeeler is the vibrant and well established community in Rostock, fostering the sport of Jugger with
+          passion and enthusiasm. You can find us at the University Rostock and HSG Uni Rostock e.V.
         </p>
         <div class="flex flex-wrap justify-center space-x-0 sm:space-x-4 mt-8">
           <CardAbout
@@ -136,13 +143,27 @@ export default defineComponent({
         </div>
       </div>
     </section>
-    <section id="events" class="py-20">
+    <!-- New About Jugger section -->
+    <section id="about-jugger" class="py-20">
+      <div class="container mx-auto text-center">
+        <div class="collapse collapse-arrow bg-base-200" v-for="(faq, index) in faqItems" :key="faq.id">
+          <input type="radio" name="faq" :checked="index === 0" />
+          <div class="collapse-title text-xl font-bold">
+            {{ faq.attributes.question }}
+          </div>
+          <div class="collapse-content text-neutral-content">
+            {{ faq.attributes.answer }}
+          </div>
+        </div>
+      </div>
+    </section>
+    <section id="events" class="py-20 bg-base-300">
       <div class="container mx-auto text-center">
         <h2 class="text-3xl font-bold mb-8">Upcoming Events</h2>
         <!-- Event details will go here -->
       </div>
     </section>
-    <section id="contact" class="py-20 bg-base-300">
+    <section id="contact" class="py-20">
       <div class="container mx-auto text-center">
         <h2 class="text-3xl font-bold mb-8">Contact Us</h2>
         <!-- Contact form or details go here -->
@@ -161,7 +182,6 @@ export default defineComponent({
 
 <style>
 .content {
-  font-family: 'Lato', sans-serif;
   .hero {
     height: 50vh;
     .cursor {
