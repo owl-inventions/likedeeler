@@ -48,6 +48,6 @@ jobs:
           context: ${{ inputs.context }}
           build-args: |
             VERSION=${{ inputs.tag }}
-            VITE_STRAPI_BASE_URL=${{ variables.VITE_STRAPI_BASE_URL_DEV }}
+            VITE_STRAPI_BASE_URL=${{ vars.VITE_STRAPI_BASE_URL_DEV }}
             VITE_STRAPI_AUTH_TOKEN=${{ secrets.VITE_STRAPI_AUTH_TOKEN_DEV }}
             VITE_VERSION=${{ inputs.tag }}
