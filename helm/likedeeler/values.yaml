@@ -78,12 +78,9 @@ cms:
     databaseClient: postgres
     databaseHost: acadia.jnhssg.de
     databasePort: 5432
-    databaseName: likedeeler-strapi-dev
     databaseUsername: likedeeler-strapi
     databaseSsl: false
     awsRegion: eu-central-1
-    awsBucket: likedeeler-strapi-dev
-    cloudfrontBaseUrl: https://d1v5z1j7v7z1j.cloudfront.net
 
   secrets:
     appKeys: ""

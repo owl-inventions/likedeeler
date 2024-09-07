@@ -1,0 +1,59 @@
+name: Production
+
+concurrency:
+  group: prod
+  cancel-in-progress: false
+
+on:
+  push:
+    tags:
+      - v*
+
+jobs:
+
+  get_version:
+    runs-on: ubuntu-latest
+    outputs:
+      version: ${{ steps.get_version.outputs.version }}
+    steps:
+      - name: Get version
+        id: get_version
+        run: echo version=${GITHUB_REF#refs/tags/} >> $GITHUB_OUTPUT
+
+  client-upload-container:
+    needs:
+      - get_version
+    secrets: inherit
+    uses: ./.github/workflows/sub-publish-client-image.yml
+    with:
+      tag: ${{ needs.get_version.outputs.version }}
+      app: likedeeler-client
+      file: client/production.Dockerfile
+      context: client
+
+  cms-upload-container:
+    needs:
+      - get_version
+    secrets: inherit
+    uses: ./.github/workflows/sub-publish-cms-image.yml
+    with:
+      tag: ${{ needs.get_version.outputs.version }}
+      app: likedeeler-cms
+      file: cms/Dockerfile
+      context: cms
+
+  strapi-deploy-to-k3s:
+    needs:
+      - get_version
+      - cms-upload-container
+      - client-upload-container
+    secrets: inherit
+    uses: ./.github/workflows/sub-deploy.yml
+    with:
+      namespace: likedeeler-test
+      cmsHost: cms.likedeeler.kube.jnhssg.de
+      clientHost: client.likedeeler.kube.jnhssg.de
+      tag: ${{ needs.get_version.outputs.version }}
+      values: helm/prod.values.yaml
+      release: likedeeler-prod
+      mode: prod

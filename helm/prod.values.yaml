@@ -1,0 +1,5 @@
+cms:
+  config:
+    databaseName: likedeeler-strapi-prod
+    awsBucket: likedeeler-strapi-prod
+    cloudfrontBaseUrl: https://d384izg7dl1mko.cloudfront.net
