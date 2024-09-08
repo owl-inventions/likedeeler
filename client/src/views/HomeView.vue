@@ -142,7 +142,8 @@ export default defineComponent({
     </section>
     <!-- New About Jugger section -->
     <section id="about-jugger" class="py-20">
-      <div class="container mx-auto text-center">
+      <div class="container mx-auto text-center p-2">
+        <p class="mb-12">Hey there! If you’re new to Jugger or curious about joining the Likedeeler team in Rostock, we’re here to help. Below are some common questions we get from newcomers—if you have more, just ask!</p>
         <div
           class="collapse collapse-arrow bg-base-200"
           v-for="(faq, index) in faqItems"
