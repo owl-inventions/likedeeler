@@ -18,6 +18,7 @@
   },
   "dependencies": {
     "axios": "^1.7.7",
+    "date-fns": "^3.6.0",
     "marked": "^14.1.1",
     "photoswipe": "^5.4.4",
     "pinia": "^2.1.7",

@@ -19,11 +19,10 @@ export async function listAllRecentArticles(): Promise<ArticleAsIdRef[]> {
       id: number
     }[]
   }> = await strapiClient.get(
-      '/api/articles?sort=date:desc&fields[0]=id'
+      '/api/articles?sort=date:desc&fields[0]=id&fields[1]=date'
   )
   return response.data.data.map((article) => article)
 }
-
 export async function listAllRecentArticlesSlugs(): Promise<ArticleAsSlugRef[]> {
   const response: AxiosResponse<StrapiResponseArticles> = await strapiClient.get(
     '/api/articles?fields[0]=slug',
