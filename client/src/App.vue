@@ -5,6 +5,7 @@
       <span class="footer-title">Links</span>
       <a href="/impressum" class="link link-hover">Impressum</a>
       <a href="/privacy" class="link link-hover">Privacy Policy</a>
+      <a href="https://status.jnhssg.de/status/likedeeler" class="link link-hover">System Status</a>
     </div>
     <div class="divider"></div>
     <div class="mt-4">
