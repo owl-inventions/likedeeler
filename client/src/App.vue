@@ -1,4 +1,5 @@
 <template>
+  <BaseNavbar />
   <router-view />
   <footer class="footer p-10 text-neutral-content bg-base-300">
     <div>
@@ -19,9 +20,11 @@
 import { defineComponent } from 'vue'
 
 import { VERSION } from '@/configurations/general.conf'
+import BaseNavbar from "@/components/BaseNavbar.vue";
 
 export default defineComponent({
   name: 'App',
+  components: {BaseNavbar},
   setup() {
     return {
       VERSION
