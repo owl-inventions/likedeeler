@@ -5,12 +5,10 @@ import CardAbout from '@/components/CardAbout.vue'
 import {
   getFaqItems,
   listAllRecentArticles,
-  listAllRecentArticlesSlugs
 } from '@/services/strapi.service'
 import CardNews from '@/components/CardNews.vue'
 import {
   type StrapiResponseFaq,
-  type ArticleAsSlugRef,
   type ArticleAsIdRef
 } from '@/types/strapi.types'
 
@@ -106,7 +104,7 @@ export default defineComponent({
         alt="Hero Background"
         class="absolute inset-0 w-full h-full object-cover z-0"
       />
-      <div class="absolute text-left top-0 left-10 z-10 text-secondary">
+      <div class="absolute text-left top-0 left-10 z-10 text-neutral">
         <h1 class="text-6xl lg:text-9xl font-bold text-paragraph mt-6">Jugger</h1>
         <h1 class="text-4xl lg:text-6xl font-bold text-paragraph mt-6">
           {{ text }}<span class="cursor">I</span>
