@@ -5,6 +5,10 @@ const routes = [
   { path: '/privacy', component: () => import('@/views/PrivacyView.vue') },
   { path: '/impressum', component: () => import('@/views/ImpressumView.vue') },
   {
+    path: '/health',
+    component: () => import('@/views/HealthCheckView.vue')
+  },
+  {
     path: '/articles/:slug',
     name: 'Article',
     component: () => import('@/views/ArticleView.vue')

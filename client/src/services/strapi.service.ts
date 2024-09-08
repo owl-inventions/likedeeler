@@ -3,11 +3,15 @@ import type {
   Article, ArticleAsIdRef,
   ArticleAsSlugRef,
   ArticleAsThumbnail,
-  FaqItem,
   StrapiResponseArticles,
   StrapiResponseFaq
 } from '@/types/strapi.types'
 import type { AxiosResponse } from 'axios'
+
+export async function getHealthCheck(): Promise<any> {
+  const response = await strapiClient.get('/health')
+  return response.data
+}
 
 export async function listAllRecentArticles(): Promise<ArticleAsIdRef[]> {
   const response: AxiosResponse<{
@@ -15,12 +19,7 @@ export async function listAllRecentArticles(): Promise<ArticleAsIdRef[]> {
       id: number
     }[]
   }> = await strapiClient.get(
-      '/api/articles?fields[0]=id',
-      {
-        params: {
-          _sort: 'date:desc',
-        }
-      }
+      '/api/articles?sort=date:desc&fields[0]=id'
   )
   return response.data.data.map((article) => article)
 }
