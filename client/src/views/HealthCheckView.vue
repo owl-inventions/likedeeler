@@ -9,7 +9,7 @@
 
 <script lang="ts">
 import { defineComponent, ref } from 'vue'
-import {getHealthCheck} from "@/services/strapi.service";
+import { getHealthCheck } from '@/services/strapi.service'
 
 export default defineComponent({
   name: 'HealthCheckView',

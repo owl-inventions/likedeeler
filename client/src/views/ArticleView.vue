@@ -48,8 +48,12 @@
 import { defineComponent, ref, onMounted } from 'vue'
 import { useRoute } from 'vue-router'
 import { marked } from 'marked'
-import type {Article, ArticleAsIdRef, ArticleAsSlugRef} from '@/types/strapi.types'
-import {getArticleBySlug, listAllRecentArticles, listAllRecentArticlesSlugs} from '@/services/strapi.service'
+import type { Article, ArticleAsIdRef, ArticleAsSlugRef } from '@/types/strapi.types'
+import {
+  getArticleBySlug,
+  listAllRecentArticles,
+  listAllRecentArticlesSlugs
+} from '@/services/strapi.service'
 import BaseGallery from '@/components/BaseGallery.vue'
 import CardNews from '@/components/CardNews.vue'
 import CardNewsBadge from '@/components/CardNewsBadge.vue'

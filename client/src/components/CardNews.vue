@@ -33,8 +33,8 @@ import CardNewsBadge from '@/components/CardNewsBadge.vue'
 import CardNewsSkeleton from '@/components/CardNewsSkeleton.vue'
 import type { ArticleAsThumbnail } from '@/types/strapi.types'
 import { getArticleThumbnailById } from '@/services/strapi.service'
-import {format} from "date-fns";
-import {de} from "date-fns/locale";
+import { format } from 'date-fns'
+import { de } from 'date-fns/locale'
 
 export default defineComponent({
   name: 'CardNews',
@@ -46,7 +46,7 @@ export default defineComponent({
     id: {
       type: Number,
       required: true
-    },
+    }
   },
   setup(props) {
     const article = ref<ArticleAsThumbnail>()

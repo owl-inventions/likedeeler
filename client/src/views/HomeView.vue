@@ -2,9 +2,17 @@
 import { defineComponent, onBeforeUnmount, onMounted } from 'vue'
 import { ref } from 'vue'
 import CardAbout from '@/components/CardAbout.vue'
-import {getFaqItems, listAllRecentArticles, listAllRecentArticlesSlugs} from '@/services/strapi.service'
+import {
+  getFaqItems,
+  listAllRecentArticles,
+  listAllRecentArticlesSlugs
+} from '@/services/strapi.service'
 import CardNews from '@/components/CardNews.vue'
-import {type StrapiResponseFaq, type ArticleAsSlugRef, type ArticleAsIdRef} from '@/types/strapi.types'
+import {
+  type StrapiResponseFaq,
+  type ArticleAsSlugRef,
+  type ArticleAsIdRef
+} from '@/types/strapi.types'
 
 export default defineComponent({
   name: 'HomeView',
@@ -118,7 +126,8 @@ export default defineComponent({
     <section id="about" class="py-20 bg-base-300">
       <div class="container mx-auto text-center">
         <p class="text-lg">
-          Likedeeler is a vibrant and well-established community in Rostock, passionately promoting the sport of Jugger. You can find us at the University of Rostock and HSG Uni Rostock e.V.
+          Likedeeler is a vibrant and well-established community in Rostock, passionately promoting
+          the sport of Jugger. You can find us at the University of Rostock and HSG Uni Rostock e.V.
         </p>
         <div class="flex flex-wrap justify-center space-x-0 sm:space-x-4 mt-8">
           <CardAbout
@@ -143,7 +152,11 @@ export default defineComponent({
     <!-- New About Jugger section -->
     <section id="about-jugger" class="py-20">
       <div class="container mx-auto text-center p-2">
-        <p class="mb-12">Hey there! If you’re new to Jugger or curious about joining the Likedeeler team in Rostock, we’re here to help. Below are some common questions we get from newcomers—if you have more, just ask!</p>
+        <p class="mb-12">
+          Hey there! If you’re new to Jugger or curious about joining the Likedeeler team in
+          Rostock, we’re here to help. Below are some common questions we get from newcomers—if you
+          have more, just ask!
+        </p>
         <div
           class="collapse collapse-arrow bg-base-200"
           v-for="(faq, index) in faqItems"

@@ -1,6 +1,7 @@
 import { strapiClient } from '@/utils/axios/strapi.client'
 import type {
-  Article, ArticleAsIdRef,
+  Article,
+  ArticleAsIdRef,
   ArticleAsSlugRef,
   ArticleAsThumbnail,
   StrapiResponseArticles,
@@ -18,9 +19,7 @@ export async function listAllRecentArticles(): Promise<ArticleAsIdRef[]> {
     data: {
       id: number
     }[]
-  }> = await strapiClient.get(
-      '/api/articles?sort=date:desc&fields[0]=id&fields[1]=date'
-  )
+  }> = await strapiClient.get('/api/articles?sort=date:desc&fields[0]=id&fields[1]=date')
   return response.data.data.map((article) => article)
 }
 export async function listAllRecentArticlesSlugs(): Promise<ArticleAsSlugRef[]> {
@@ -28,7 +27,7 @@ export async function listAllRecentArticlesSlugs(): Promise<ArticleAsSlugRef[]> 
     '/api/articles?fields[0]=slug',
     {
       params: {
-        _sort: 'date:desc',
+        _sort: 'date:desc'
       }
     }
   )
