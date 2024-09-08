@@ -52,21 +52,6 @@ export async function getArticleThumbnailById(id: number): Promise<ArticleAsThum
   return response.data.data.attributes as ArticleAsThumbnail
 }
 
-export async function getArticleThumbnailBySlug(slug: string): Promise<ArticleAsThumbnail> {
-  const response = await strapiClient.get(`/api/articles?filters[slug][$eq]=${slug}`, {
-    params: {
-      'fields[0]': 'slug',
-      'fields[1]': 'title',
-      'fields[2]': 'description',
-      'fields[3]': 'category',
-      'fields[4]': 'date',
-      'fields[5]': 'content',
-      'populate[thumbnail]': 'thumbnail'
-    }
-  })
-  return response.data.data[0].attributes as ArticleAsThumbnail
-}
-
 export async function getArticleBySlug(slug: string): Promise<Article> {
   const response = await strapiClient.get(`/api/articles?filters[slug][$eq]=${slug}`, {
     params: {
