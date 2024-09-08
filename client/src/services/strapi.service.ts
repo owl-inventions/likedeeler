@@ -84,6 +84,10 @@ export async function getArticleBySlug(slug: string): Promise<Article> {
 }
 
 export async function getFaqItems(): Promise<StrapiResponseFaq[]> {
-  const response: AxiosResponse<any> = await strapiClient.get('/api/faqs')
+  const response: AxiosResponse<any> = await strapiClient.get('/api/faqs',{
+    params: {
+      '_sort': 'id:asc'
+    }
+  })
   return response.data.data as StrapiResponseFaq[]
 }
