@@ -19,7 +19,6 @@ export default ({ env }) => [
             "data:",
             "blob:",
             "dl.airtable.com",
-            "https://likedeeler-strapi-dev.s3.eu-central-1.amazonaws.com/",
             "https://d1v5z1j7v7z1j.cloudfront.net",
             "https://d2wplaacghaca4.cloudfront.net",
             "https://d384izg7dl1mko.cloudfront.net"
