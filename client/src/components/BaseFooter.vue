@@ -1,5 +1,5 @@
 <template>
-  <footer class="footer p-10 text-neutral-content bg-base-300">
+  <footer class="footer p-10 text-neutral-content bg-base-300 flex-grow">
     <div>
       <span class="footer-title">Links</span>
       <a href="/impressum" class="link link-hover">Impressum</a>

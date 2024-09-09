@@ -1,5 +1,5 @@
 <template>
-  <nav class="navbar">
+  <nav class="navbar bg-base-300">
     <a class="btn btn-ghost text-xl" href="/">Likedeeler</a>
   </nav>
 </template>
