@@ -76,9 +76,9 @@ cms:
 
   config:
     databaseClient: postgres
-    databaseHost: acadia.jnhssg.de
+    databaseHost: ""
     databasePort: 5432
-    databaseUsername: likedeeler-strapi
+    databaseUsername: ""
     databaseSsl: false
     awsRegion: eu-central-1
 
