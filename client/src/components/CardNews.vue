@@ -22,18 +22,18 @@
       <p>{{ article?.description }}</p>
       <p class="text-neutral-content" v-html="article?.content"></p>
     </div>
-    <div v-if="isFirst" class="new-indicator">New</div>
+    <div v-if="isNew" class="new-indicator bg-primary text-primary-content">New</div>
   </router-link>
 </template>
 
 <script lang="ts">
-import { defineComponent, ref } from 'vue'
+import { defineComponent, ref, computed } from 'vue'
 import { marked } from 'marked'
 import CardNewsBadge from '@/components/CardNewsBadge.vue'
 import CardNewsSkeleton from '@/components/CardNewsSkeleton.vue'
 import type { ArticleAsThumbnail } from '@/types/strapi.types'
 import { getArticleThumbnailById } from '@/services/strapi.service'
-import { format } from 'date-fns'
+import { format, differenceInWeeks } from 'date-fns'
 import { de } from 'date-fns/locale'
 
 export default defineComponent({
@@ -47,10 +47,6 @@ export default defineComponent({
       type: Number,
       required: true
     },
-    isFirst: {
-      type: Boolean,
-      default: false
-    }
   },
   setup(props) {
     const article = ref<ArticleAsThumbnail>()
@@ -63,9 +59,18 @@ export default defineComponent({
       loading.value = false
     })
 
+    const isNew = computed(() => {
+      if (article.value) {
+        const articleDate = new Date(article.value.date)
+        return differenceInWeeks(new Date(), articleDate) < 12
+      }
+      return false
+    })
+
     return {
       article,
-      loading
+      loading,
+      isNew
     }
   }
 })
@@ -110,9 +115,7 @@ export default defineComponent({
 .new-indicator {
   position: absolute;
   top: 0;
-  right: 0;
-  background-color: red;
-  color: white;
+  left: 0;
   padding: 0.25rem 0.5rem;
   border-radius: 0 0.5rem 0 0.5rem;
   font-size: 0.75rem;
