@@ -65,6 +65,7 @@ jobs:
             --set "client.ingress.hosts={${{ inputs.clientHost }}}" \
             --set cms.config.databaseHost=${{ vars.STRAPI_POSTGRES_HOST }} \
             --set cms.config.databaseUsername=${{ vars.STRAPI_POSTGRES_USER }} \
+            --set cms.config.databasePort=${{ vars.STRAPI_POSTGRES_PORT }} \
             --set cms.secrets.appKeys=${{ secrets.APP_KEYS }} \
             --set cms.secrets.apiTokenSalt=${{ secrets.API_TOKEN_SALT }} \
             --set cms.secrets.adminJwtSecret=${{ secrets.ADMIN_JWT_SECRET }} \

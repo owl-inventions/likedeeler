@@ -77,7 +77,7 @@ cms:
   config:
     databaseClient: postgres
     databaseHost: ""
-    databasePort: 5432
+    databasePort: ""
     databaseUsername: ""
     databaseSsl: false
     awsRegion: eu-central-1
