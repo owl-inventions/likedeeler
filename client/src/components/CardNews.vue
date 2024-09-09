@@ -1,4 +1,3 @@
-<!-- CardNews.vue -->
 <template>
   <div v-if="loading" class="relative">
     <CardNewsSkeleton />
@@ -23,6 +22,7 @@
       <p>{{ article?.description }}</p>
       <p class="text-neutral-content" v-html="article?.content"></p>
     </div>
+    <div v-if="isFirst" class="new-indicator">New</div>
   </router-link>
 </template>
 
@@ -46,6 +46,10 @@ export default defineComponent({
     id: {
       type: Number,
       required: true
+    },
+    isFirst: {
+      type: Boolean,
+      default: false
     }
   },
   setup(props) {
@@ -101,5 +105,17 @@ export default defineComponent({
   100% {
     width: 100%;
   }
+}
+
+.new-indicator {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background-color: red;
+  color: white;
+  padding: 0.25rem 0.5rem;
+  border-radius: 0 0.5rem 0 0.5rem;
+  font-size: 0.75rem;
+  font-weight: bold;
 }
 </style>
