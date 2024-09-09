@@ -105,7 +105,7 @@ export default defineComponent({
         </h1>
       </div>
     </section>
-    <section id="news" class="py-20">
+    <section id="news" class="py-20 px-5 sm:px-10">
       <div class="container mx-auto text-center">
         <h2 class="text-3xl font-bold mb-8">Latest News</h2>
         <div class="carousel w-full rounded-box">
@@ -115,7 +115,7 @@ export default defineComponent({
         </div>
       </div>
     </section>
-    <section id="about" class="py-20 bg-base-300">
+    <section id="about" class="py-20 bg-base-300 px-5 sm:px-10">
       <div class="container mx-auto text-center">
         <p class="text-lg">
           Likedeeler is a vibrant and well-established community in Rostock, passionately promoting
@@ -142,7 +142,7 @@ export default defineComponent({
       </div>
     </section>
     <!-- New About Jugger section -->
-    <section id="about-jugger" class="py-20">
+    <section id="about-jugger" class="py-20 px-5 sm:px-10">
       <div class="container mx-auto text-center p-2">
         <p class="mb-12">
           Hey there! If you’re new to Jugger or curious about joining the Likedeeler team in
@@ -165,7 +165,7 @@ export default defineComponent({
         </div>
       </div>
     </section>
-    <section id="events" class="py-20 bg-base-300">
+    <section id="events" class="py-20 bg-base-300 px-5 sm:px-10">
       <div class="container mx-auto text-center">
         <h2 class="text-3xl font-bold mb-8">Upcoming Events</h2>
         <p class="text-lg">
@@ -174,7 +174,7 @@ export default defineComponent({
         </p>
       </div>
     </section>
-    <section id="contact" class="py-20">
+    <section id="contact" class="py-20 px-5 sm:px-10">
       <div class="container mx-auto text-center">
         <h2 class="text-3xl font-bold mb-8">Contact Us</h2>
         <!-- Contact form or details go here -->
