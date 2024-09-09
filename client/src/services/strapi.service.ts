@@ -19,7 +19,14 @@ export async function listAllRecentArticles(): Promise<ArticleAsIdRef[]> {
     data: {
       id: number
     }[]
-  }> = await strapiClient.get('/api/articles?sort=date:desc&fields[0]=id&fields[1]=date')
+  }> = await strapiClient.get('/api/articles', {
+    params: {
+      'sort': 'date:desc',
+      'fields[0]': 'id',
+      'fields[1]': 'date',
+      'pagination[limit]': 8
+    }
+  })
   return response.data.data.map((article) => article)
 }
 export async function listAllRecentArticlesSlugs(): Promise<ArticleAsSlugRef[]> {
