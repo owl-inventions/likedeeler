@@ -1,5 +1,5 @@
 <template>
-  <div class="container mx-auto py-20 p-20">
+  <div class="container mx-auto px-5 py-5">
     <div class="text-sm breadcrumbs mb-4">
       <ul>
         <li><a href="/">Home</a></li>
