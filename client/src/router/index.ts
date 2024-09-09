@@ -13,6 +13,10 @@ const routes = [
     component: () => import('@/views/ArticleView.vue'),
     children: [
       {
+        path: '',
+        component: () => import('@/components/ArticleOverview.vue')
+      },
+      {
         path: ':slug',
         component: () => import('@/components/ArticleDetail.vue'),
         props: true

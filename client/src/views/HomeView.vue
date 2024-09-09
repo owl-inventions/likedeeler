@@ -168,7 +168,10 @@ export default defineComponent({
     <section id="events" class="py-20 bg-base-300">
       <div class="container mx-auto text-center">
         <h2 class="text-3xl font-bold mb-8">Upcoming Events</h2>
-        <!-- Event details will go here -->
+        <p class="text-lg">
+          Stay up to date with our latest events, tournaments, and training sessions. Follow us on
+          Instagram for the most recent updates.
+        </p>
       </div>
     </section>
     <section id="contact" class="py-20">

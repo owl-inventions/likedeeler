@@ -34,6 +34,25 @@ export async function listAllRecentArticlesSlugs(): Promise<ArticleAsSlugRef[]> 
   return response.data.data.map((article) => article.attributes)
 }
 
+export async function listAllArticles(): Promise<{ id: number; attributes: ArticleAsSlugRef | ArticleAsThumbnail }[]> {
+  const response: AxiosResponse<StrapiResponseArticles> = await strapiClient.get(
+      '/api/articles',
+      {
+        params: {
+          'fields[0]': 'slug',
+          'fields[1]': 'title',
+          'fields[2]': 'description',
+          'fields[3]': 'category',
+          'fields[4]': 'date',
+          'fields[5]': 'content',
+          'populate[thumbnail]': 'thumbnail',
+          'sort': 'date:desc'
+        }
+      })
+
+  return response.data.data
+}
+
 export async function getArticleThumbnailById(id: number): Promise<ArticleAsThumbnail> {
   const response = await strapiClient.get(`/api/articles/${id}`, {
     params: {

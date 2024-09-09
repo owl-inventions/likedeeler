@@ -3,7 +3,7 @@
     <div class="text-sm breadcrumbs mb-4">
       <ul>
         <li><a href="/">Home</a></li>
-        <li><a href="/">News</a></li>
+        <li><a href="/articles">News</a></li>
         <li>{{ article?.title }}</li>
       </ul>
     </div>
