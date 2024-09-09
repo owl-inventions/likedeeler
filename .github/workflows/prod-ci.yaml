@@ -52,7 +52,7 @@ jobs:
     with:
       namespace: likedeeler
       cmsHost: cms.likedeeler.kube.jnhssg.de
-      clientHost: client.likedeeler.kube.jnhssg.de
+      clientHost: client.likedeeler.kube.jnhssg.de,likedeeler.de
       tag: ${{ needs.get_version.outputs.version }}
       values: helm/prod.values.yaml
       release: likedeeler-prod
