@@ -62,7 +62,7 @@ export default defineComponent({
     const isNew = computed(() => {
       if (article.value) {
         const articleDate = new Date(article.value.date)
-        return differenceInWeeks(new Date(), articleDate) < 12
+        return differenceInWeeks(new Date(), articleDate) < 4
       }
       return false
     })

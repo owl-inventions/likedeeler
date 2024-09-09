@@ -1,15 +1,25 @@
 <template>
-  <InfoView title="Privacy Policy" :content="privacyContent" />
+  <div class="container mx-auto py-20 p-20">
+    <div class="text-sm breadcrumbs mb-4">
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li>
+          <a href="/privacy">Privacy</a>
+        </li>
+      </ul>
+    </div>
+    <h1 class="text-3xl font-bold mb-8">Privacy</h1>
+    <div v-html="privacyContent" class="prose"></div>
+  </div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue'
-import InfoView from '@/components/InfoView.vue'
 
 export default defineComponent({
-  name: 'PrivacyView',
-  components: { InfoView },
+  name: 'InfoPrivacy',
   setup() {
+
     const privacyContent = `
 <section class="mb-8">
 <h1>Datenschutzerklärung</h1>
@@ -101,3 +111,6 @@ export default defineComponent({
   }
 })
 </script>
+
+<style scoped>
+</style>

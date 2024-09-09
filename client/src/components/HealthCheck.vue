@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="content font-sans p-20">
     <h1>Health Check</h1>
     <p v-if="loading">Loading...</p>
     <p v-else-if="error">Error: {{ error }}</p>
@@ -12,7 +12,7 @@ import { defineComponent, ref } from 'vue'
 import { getHealthCheck } from '@/services/strapi.service'
 
 export default defineComponent({
-  name: 'HealthCheckView',
+  name: 'HealthCheck',
   setup() {
     const healthStatus = ref<string | null>(null)
     const loading = ref(true)

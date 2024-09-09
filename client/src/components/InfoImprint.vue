@@ -1,15 +1,25 @@
 <template>
-  <InfoView title="Impressum" :content="impressumContent" />
+  <div class="container mx-auto py-20 p-20">
+    <div class="text-sm breadcrumbs mb-4">
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li>
+          <a href="/impressum">Impressum</a>
+        </li>
+      </ul>
+    </div>
+    <h1 class="text-3xl font-bold mb-8">Privacy</h1>
+    <div v-html="impressumContent" class="prose"></div>
+  </div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue'
-import InfoView from '@/components/InfoView.vue'
 
 export default defineComponent({
-  name: 'ImpressumView',
-  components: { InfoView },
+  name: 'InfoImprint',
   setup() {
+
     const impressumContent = `
       <section class="mb-8">
         <h2 class="text-2xl font-semibold mb-4">Angaben gemäß § 5 TMG</h2>
@@ -37,10 +47,4 @@ export default defineComponent({
 </script>
 
 <style scoped>
-h2 {
-  color: #2c3e50;
-}
-p {
-  line-height: 1.6;
-}
 </style>

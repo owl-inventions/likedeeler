@@ -1,16 +1,31 @@
 import { createRouter, createWebHistory } from 'vue-router'
 
 const routes = [
-  { path: '/', component: () => import('@/views/HomeView.vue') },
-  { path: '/privacy', component: () => import('@/views/PrivacyView.vue') },
-  { path: '/impressum', component: () => import('@/views/ImpressumView.vue') },
   {
-    path: '/health',
-    component: () => import('@/views/HealthCheckView.vue')
+    path: '/',
+    component: () => import('@/views/BaseView.vue') ,
+    children: [
+      {
+        path: '',
+        component: () => import('@/components/BaseLanding.vue')
+      },
+      {
+        path: '/health',
+        component: () => import('@/components/HealthCheck.vue')
+      },
+      {
+        path: '/privacy',
+        component: () => import('@/components/InfoPrivacy.vue')
+      },
+      {
+        path: '/impressum',
+        component: () => import('@/components/InfoImprint.vue')
+      }
+    ]
   },
   {
     path: '/articles',
-    component: () => import('@/views/ArticleView.vue'),
+    component: () => import('@/views/BaseView.vue'),
     children: [
       {
         path: '',

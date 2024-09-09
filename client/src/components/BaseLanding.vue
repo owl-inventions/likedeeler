@@ -7,7 +7,7 @@ import CardNews from '@/components/CardNews.vue'
 import { type StrapiResponseFaq, type ArticleAsIdRef } from '@/types/strapi.types'
 
 export default defineComponent({
-  name: 'HomeView',
+  name: 'BaseLanding',
   components: { CardNews, CardAbout },
   setup() {
     const text = ref('')
@@ -79,7 +79,7 @@ export default defineComponent({
       const scrollIndicator = document.getElementById('scrollIndicator')
       const scrollTop = document.documentElement.scrollTop || document.body.scrollTop
       const scrollHeight =
-        document.documentElement.scrollHeight - document.documentElement.clientHeight
+          document.documentElement.scrollHeight - document.documentElement.clientHeight
       const scrollWidth = (scrollTop / scrollHeight) * 100
       if (scrollIndicator) {
         scrollIndicator.style.width = scrollWidth + '%'
@@ -94,9 +94,9 @@ export default defineComponent({
     <div id="scrollIndicator" class="fixed top-0 left-0 w-0 h-1 bg-primary z-50"></div>
     <section class="hero h-screen flex flex-col bg-cover bg-center relative">
       <img
-        src="/img/hero.webp"
-        alt="Hero Background"
-        class="absolute inset-0 w-full h-full object-cover z-0"
+          src="/img/hero.webp"
+          alt="Hero Background"
+          class="absolute inset-0 w-full h-full object-cover z-0"
       />
       <div class="absolute text-left top-0 left-10 z-10 text-neutral">
         <h1 class="text-6xl lg:text-9xl font-bold text-paragraph mt-6">Jugger</h1>
@@ -123,20 +123,20 @@ export default defineComponent({
         </p>
         <div class="flex flex-wrap justify-center space-x-0 sm:space-x-4 mt-8">
           <CardAbout
-            imageSrc="/img/join-us.webp"
-            imageAlt="Join Us"
-            title="HSG Uni Rostock e.V."
-            description="Become a part of our vibrant community. We welcome everyone who shares our passion for Jugger. Whether you are a beginner or an experienced player, you will find a place here."
-            buttonText="@HSG"
-            button-link="//hsgunirostock.de/trainingszeiten/#Jugger"
+              imageSrc="/img/join-us.webp"
+              imageAlt="Join Us"
+              title="HSG Uni Rostock e.V."
+              description="Become a part of our vibrant community. We welcome everyone who shares our passion for Jugger. Whether you are a beginner or an experienced player, you will find a place here."
+              buttonText="@HSG"
+              button-link="//hsgunirostock.de/trainingszeiten/#Jugger"
           />
           <CardAbout
-            imageSrc="/img/join-us-uni.webp"
-            imageAlt="Join Us"
-            title="University Rostock"
-            description="Our university Jugger program offers students a unique opportunity to engage in this exciting sport. Join us for regular training sessions, tournaments, and social events."
-            buttonText="@University"
-            button-link="//hochschulsport.uni-rostock.de/cgi/webpage.cgi?kursinfo=F1AAADD354"
+              imageSrc="/img/join-us-uni.webp"
+              imageAlt="Join Us"
+              title="University Rostock"
+              description="Our university Jugger program offers students a unique opportunity to engage in this exciting sport. Join us for regular training sessions, tournaments, and social events."
+              buttonText="@University"
+              button-link="//hochschulsport.uni-rostock.de/cgi/webpage.cgi?kursinfo=F1AAADD354"
           />
         </div>
       </div>
@@ -150,10 +150,10 @@ export default defineComponent({
           have more, just ask!
         </p>
         <div
-          class="collapse collapse-arrow bg-base-200"
-          v-for="(faq, index) in faqItems"
-          :key="faq.id"
-          aria-labelledby="faq"
+            class="collapse collapse-arrow bg-base-200"
+            v-for="(faq, index) in faqItems"
+            :key="faq.id"
+            aria-labelledby="faq"
         >
           <input type="radio" name="faq" :checked="index === 0" />
           <div class="collapse-title text-xl font-bold">
@@ -179,10 +179,10 @@ export default defineComponent({
         <h2 class="text-3xl font-bold mb-8">Contact Us</h2>
         <!-- Contact form or details go here -->
         <a
-          href="https://www.instagram.com/likedeeler_rostock/"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="btn btn-primary"
+            href="https://www.instagram.com/likedeeler_rostock/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn btn-primary"
         >
           Follow us on Instagram
         </a>
