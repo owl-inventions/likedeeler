@@ -12,6 +12,9 @@ COPY package*.json ./
 RUN npm ci
 COPY . .
 
+# overwrite robots.txt with staging robots.txt to prevent search engine indexing
+RUN cp public/staging.robots.txt public/robots.txt
+
 RUN echo "VITE_VERSION=${VITE_VERSION}" >> .env.staging
 
 RUN npm run build:staging
