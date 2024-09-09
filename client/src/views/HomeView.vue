@@ -2,15 +2,9 @@
 import { defineComponent, onBeforeUnmount, onMounted } from 'vue'
 import { ref } from 'vue'
 import CardAbout from '@/components/CardAbout.vue'
-import {
-  getFaqItems,
-  listAllRecentArticles,
-} from '@/services/strapi.service'
+import { getFaqItems, listAllRecentArticles } from '@/services/strapi.service'
 import CardNews from '@/components/CardNews.vue'
-import {
-  type StrapiResponseFaq,
-  type ArticleAsIdRef
-} from '@/types/strapi.types'
+import { type StrapiResponseFaq, type ArticleAsIdRef } from '@/types/strapi.types'
 
 export default defineComponent({
   name: 'HomeView',

@@ -1,6 +1,6 @@
 <template>
   <nav class="navbar">
-    <a class="btn btn-ghost text-xl" href="/" >Likedeeler</a>
+    <a class="btn btn-ghost text-xl" href="/">Likedeeler</a>
   </nav>
 </template>
 
@@ -12,5 +12,4 @@ export default defineComponent({
 })
 </script>
 
-<style scoped>
-</style>
+<style scoped></style>

@@ -9,9 +9,15 @@ const routes = [
     component: () => import('@/views/HealthCheckView.vue')
   },
   {
-    path: '/articles/:slug',
-    name: 'Article',
-    component: () => import('@/views/ArticleView.vue')
+    path: '/articles',
+    component: () => import('@/views/ArticleView.vue'),
+    children: [
+      {
+        path: ':slug',
+        component: () => import('@/components/ArticleDetail.vue'),
+        props: true
+      }
+    ]
   }
 ]
 
