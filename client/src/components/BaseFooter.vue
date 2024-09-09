@@ -8,6 +8,7 @@
     </div>
     <div class="divider"></div>
     <div class="mt-4">
+      <a href="https://github.com/owl-inventions/likedeeler" class="link link-hover">🧑🏼‍💻 GitHub</a>
       <p>Made with <span style="color: #e25555">&#9829;</span> in Rostock.</p>
       <p class="text-gray-500">{{ VERSION }}</p>
     </div>
