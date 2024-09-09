@@ -1,0 +1,12 @@
+![Staging CI](https://github.com/jhasselberg/your-repo/actions/workflows/staging-ci.yaml/badge.svg)
+![Production CI](https://github.com/jhasselberg/your-repo/actions/workflows/prod-ci.yaml/badge.svg)
+
+# Likedeeler Blog - A Strapi and Vue 3 Blog
+
+This a blog built with Strapi and Vue 3. It is a simple blog with posts and categories. The blog is built with Strapi as the backend and Vue 3 as the frontend. You can find a hands one README in each of the `client` and `cms` directories.
+
+## Architecture Overview
+
+![Architecture](https://d384izg7dl1mko.cloudfront.net/Screenshot_2024_09_08_at_15_24_33_62c7a276c1.png)
+
+The applications are running on K3s, a lightweight Kubernetes distribution, deployed across a multi-node cluster on Hetzner Cloud. For the design, I utilized Tailwind CSS and DaisyUI to create a clean, responsive interface for both mobile and desktop. All assets served by Strapi are optimized and delivered through the Cloudflare CDN for fast and reliable access.
