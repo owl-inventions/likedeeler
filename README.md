@@ -1,5 +1,5 @@
-![Staging CI](https://github.com/jhasselberg/your-repo/actions/workflows/staging-ci.yaml/badge.svg)
-![Production CI](https://github.com/jhasselberg/your-repo/actions/workflows/prod-ci.yaml/badge.svg)
+![Staging CI](https://github.com/owl-inventions/likedeeler/actions/workflows/staging-ci.yaml/badge.svg)
+![Production CI](https://github.com/owl-inventions/likedeeler/actions/workflows/prod-ci.yaml/badge.svg)
 
 # Likedeeler Blog - A Strapi and Vue 3 Blog
 
