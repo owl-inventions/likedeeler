@@ -1,9 +1,9 @@
 ![Staging CI](https://github.com/owl-inventions/likedeeler/actions/workflows/staging-ci.yaml/badge.svg)
 ![Production CI](https://github.com/owl-inventions/likedeeler/actions/workflows/prod-ci.yaml/badge.svg)
 
-# Likedeeler Blog - A Strapi and Vue 3 Blog
+# Likedeeler Blog and ⚓️ for newcomers
 
-This a blog built with Strapi and Vue 3. It is a simple blog with posts and categories. The blog is built with Strapi as the backend and Vue 3 as the frontend. You can find a hands one README in each of the `client` and `cms` directories.
+This blog is built with Vue 3 and strapi as headless CMS. It is a simple blog with posts and categories. The blog is built with Strapi as the backend and Vue 3 as the frontend. You can find a hands one README in each of the `client` and `cms` directories.
 
 ## Architecture Overview
 
