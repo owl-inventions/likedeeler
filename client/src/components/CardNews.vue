@@ -46,7 +46,7 @@ export default defineComponent({
     id: {
       type: Number,
       required: true
-    },
+    }
   },
   setup(props) {
     const article = ref<ArticleAsThumbnail>()

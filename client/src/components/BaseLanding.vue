@@ -2,7 +2,7 @@
 import { defineComponent, onBeforeUnmount, onMounted } from 'vue'
 import { ref } from 'vue'
 import CardAbout from '@/components/CardAbout.vue'
-import {getFaqItems, listAllDepartments, listAllRecentArticles} from '@/services/strapi.service'
+import { getFaqItems, listAllDepartments, listAllRecentArticles } from '@/services/strapi.service'
 import CardNews from '@/components/CardNews.vue'
 import {
   type StrapiResponseFaq,
@@ -90,7 +90,7 @@ export default defineComponent({
       const scrollIndicator = document.getElementById('scrollIndicator')
       const scrollTop = document.documentElement.scrollTop || document.body.scrollTop
       const scrollHeight =
-          document.documentElement.scrollHeight - document.documentElement.clientHeight
+        document.documentElement.scrollHeight - document.documentElement.clientHeight
       const scrollWidth = (scrollTop / scrollHeight) * 100
       if (scrollIndicator) {
         scrollIndicator.style.width = scrollWidth + '%'
@@ -105,9 +105,9 @@ export default defineComponent({
     <div id="scrollIndicator" class="fixed top-0 left-0 w-0 h-1 bg-primary z-50"></div>
     <section class="hero h-screen flex flex-col bg-cover bg-center relative">
       <img
-          src="/img/hero.webp"
-          alt="Hero Background"
-          class="absolute inset-0 w-full h-full object-cover z-0"
+        src="/img/hero.webp"
+        alt="Hero Background"
+        class="absolute inset-0 w-full h-full object-cover z-0"
       />
       <div class="absolute text-left top-0 left-10 z-10 text-neutral">
         <h1 class="text-6xl lg:text-9xl font-bold text-paragraph mt-6">Jugger</h1>
@@ -131,11 +131,15 @@ export default defineComponent({
         <h2 class="text-3xl font-bold mb-8">Who We Are</h2>
         <p class="text-lg">
           Likedeeler is a vibrant and well-established community in Rostock, passionately promoting
-          the sport of Jugger. We are a diverse group of players, ranging from beginners to seasoned professionals.
-          You can find us at the University of Rostock and HSG Uni Rostock e.V.
+          the sport of Jugger. We are a diverse group of players, ranging from beginners to seasoned
+          professionals. You can find us at the University of Rostock and HSG Uni Rostock e.V.
         </p>
         <div class="flex flex-wrap justify-center space-x-0 sm:space-x-4 mt-8">
-          <CardAbout v-for="department in departments" :key="department.id" :department="department" />
+          <CardAbout
+            v-for="department in departments"
+            :key="department.id"
+            :department="department"
+          />
         </div>
       </div>
     </section>
@@ -149,10 +153,10 @@ export default defineComponent({
           have more, just ask!
         </p>
         <div
-            class="collapse collapse-arrow bg-base-200"
-            v-for="(faq, index) in faqItems"
-            :key="faq.id"
-            aria-labelledby="faq"
+          class="collapse collapse-arrow bg-base-200 rounded-box p-4 mb-4"
+          v-for="(faq, index) in faqItems"
+          :key="faq.id"
+          aria-labelledby="faq"
         >
           <input type="radio" name="faq" :checked="index === 0" />
           <div class="collapse-title text-xl font-bold">
@@ -178,10 +182,10 @@ export default defineComponent({
         <h2 class="text-3xl font-bold mb-8">Contact Us</h2>
         <!-- Contact form or details go here -->
         <a
-            href="https://www.instagram.com/likedeeler_rostock/"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="btn btn-primary"
+          href="https://www.instagram.com/likedeeler_rostock/"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn btn-primary"
         >
           Follow us on Instagram
         </a>

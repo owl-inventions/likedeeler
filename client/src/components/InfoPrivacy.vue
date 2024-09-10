@@ -19,7 +19,6 @@ import { defineComponent } from 'vue'
 export default defineComponent({
   name: 'InfoPrivacy',
   setup() {
-
     const privacyContent = `
 <section class="mb-8">
 <h1>Datenschutzerklärung</h1>
@@ -112,5 +111,4 @@ export default defineComponent({
 })
 </script>
 
-<style scoped>
-</style>
+<style scoped></style>

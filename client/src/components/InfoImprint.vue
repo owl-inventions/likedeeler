@@ -19,7 +19,6 @@ import { defineComponent } from 'vue'
 export default defineComponent({
   name: 'InfoImprint',
   setup() {
-
     const impressumContent = `
       <section class="mb-8">
         <h2 class="text-2xl font-semibold mb-4">Angaben gemäß § 5 TMG</h2>
@@ -46,5 +45,4 @@ export default defineComponent({
 })
 </script>
 
-<style scoped>
-</style>
+<style scoped></style>

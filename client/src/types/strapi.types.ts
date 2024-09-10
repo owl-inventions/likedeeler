@@ -15,45 +15,45 @@ export type Image = {
 }
 
 export type Training = {
-  id: number;
-  start: string;
-  end: string;
-  dayOfTheWeek: string;
+  id: number
+  start: string
+  end: string
+  dayOfTheWeek: string
   location: {
-    id: number;
-    latitude: number;
-    longitude: number;
-  };
-};
+    id: number
+    latitude: number
+    longitude: number
+  }
+}
 
 export type DepartmentAttributes = {
-  title: string;
-  description: string;
-  link: string;
+  title: string
+  description: string
+  link: string
   coverImage: {
     data: StrapiImage
-  };
-  trainings: Training[];
-  createdAt: string;
-  updatedAt: string;
-  publishedAt: string;
-};
+  }
+  trainings: Training[]
+  createdAt: string
+  updatedAt: string
+  publishedAt: string
+}
 
 export type DepartmentData = {
-  id: number;
-  attributes: DepartmentAttributes;
-};
+  id: number
+  attributes: DepartmentAttributes
+}
 
 export type StrapiResponseDepartments = {
-  data: DepartmentData[];
+  data: DepartmentData[]
   meta: {
     pagination: {
-      start: number;
-      limit: number;
-      total: number;
-    };
-  };
-};
+      start: number
+      limit: number
+      total: number
+    }
+  }
+}
 
 export type StrapiImage = {
   id: number

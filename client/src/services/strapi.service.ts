@@ -4,7 +4,8 @@ import type {
   ArticleAsIdRef,
   ArticleAsSlugRef,
   ArticleAsThumbnail,
-  StrapiResponseArticles, StrapiResponseDepartments,
+  StrapiResponseArticles,
+  StrapiResponseDepartments,
   StrapiResponseFaq
 } from '@/types/strapi.types'
 import type { AxiosResponse } from 'axios'
@@ -17,7 +18,7 @@ export async function getHealthCheck(): Promise<any> {
 export async function listAllDepartments(): Promise<StrapiResponseDepartments> {
   const response = await strapiClient.get('/api/departments', {
     params: {
-      'sort': 'id:asc',
+      sort: 'id:asc',
       'pagination[limit]': 2,
       'populate[0]': 'trainings',
       'populate[1]': 'trainings.location',
@@ -34,7 +35,7 @@ export async function listAllRecentArticles(): Promise<ArticleAsIdRef[]> {
     }[]
   }> = await strapiClient.get('/api/articles', {
     params: {
-      'sort': 'date:desc',
+      sort: 'date:desc',
       'fields[0]': 'id',
       'fields[1]': 'date',
       'pagination[limit]': 8
@@ -54,21 +55,21 @@ export async function listAllRecentArticlesSlugs(): Promise<ArticleAsSlugRef[]> 
   return response.data.data.map((article) => article.attributes)
 }
 
-export async function listAllArticles(): Promise<{ id: number; attributes: ArticleAsSlugRef | ArticleAsThumbnail }[]> {
-  const response: AxiosResponse<StrapiResponseArticles> = await strapiClient.get(
-      '/api/articles',
-      {
-        params: {
-          'fields[0]': 'slug',
-          'fields[1]': 'title',
-          'fields[2]': 'description',
-          'fields[3]': 'category',
-          'fields[4]': 'date',
-          'fields[5]': 'content',
-          'populate[thumbnail]': 'thumbnail',
-          'sort': 'date:desc'
-        }
-      })
+export async function listAllArticles(): Promise<
+  { id: number; attributes: ArticleAsSlugRef | ArticleAsThumbnail }[]
+> {
+  const response: AxiosResponse<StrapiResponseArticles> = await strapiClient.get('/api/articles', {
+    params: {
+      'fields[0]': 'slug',
+      'fields[1]': 'title',
+      'fields[2]': 'description',
+      'fields[3]': 'category',
+      'fields[4]': 'date',
+      'fields[5]': 'content',
+      'populate[thumbnail]': 'thumbnail',
+      sort: 'date:desc'
+    }
+  })
 
   return response.data.data
 }
