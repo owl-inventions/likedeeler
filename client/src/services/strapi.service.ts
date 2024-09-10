@@ -17,6 +17,7 @@ export async function getHealthCheck(): Promise<any> {
 export async function listAllDepartments(): Promise<StrapiResponseDepartments> {
   const response = await strapiClient.get('/api/departments', {
     params: {
+      'sort': 'id:asc',
       'pagination[limit]': 2,
       'populate[0]': 'trainings',
       'populate[1]': 'trainings.location',
