@@ -11,9 +11,9 @@
     <CardNewsBadge :text="article?.category" additionalClasses="badge-outline" />
     <figure class="image-wrapper">
       <img
-        :src="article?.thumbnail.data.attributes.formats.medium.url"
+        :src="article?.thumbnail.data.attributes.formats.small.url"
         class="image-content"
-        :alt="article?.thumbnail.data.attributes.formats.medium.hash"
+        :alt="article?.thumbnail.data.attributes.formats.small.hash"
       />
     </figure>
     <div class="card-body rounded-b text-left">

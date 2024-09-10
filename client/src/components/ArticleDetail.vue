@@ -10,8 +10,8 @@
     <div v-if="article">
       <div class="hero relative rounded-xl overflow-hidden">
         <img
-          :src="article.thumbnail.data.attributes.formats.medium.url"
-          :alt="article.thumbnail.data.attributes.formats.medium.hash"
+          :src="article.thumbnail.data.attributes.formats.large.url"
+          :alt="article.thumbnail.data.attributes.formats.large.hash"
           class="w-full h-64 object-cover"
         />
         <CardNewsBadge :text="article.category" />
