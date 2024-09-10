@@ -4,13 +4,25 @@ import type {
   ArticleAsIdRef,
   ArticleAsSlugRef,
   ArticleAsThumbnail,
-  StrapiResponseArticles,
+  StrapiResponseArticles, StrapiResponseDepartments,
   StrapiResponseFaq
 } from '@/types/strapi.types'
 import type { AxiosResponse } from 'axios'
 
 export async function getHealthCheck(): Promise<any> {
   const response = await strapiClient.get('/health')
+  return response.data
+}
+
+export async function listAllDepartments(): Promise<StrapiResponseDepartments> {
+  const response = await strapiClient.get('/api/departments', {
+    params: {
+      'pagination[limit]': 2,
+      'populate[0]': 'trainings',
+      'populate[1]': 'trainings.location',
+      'populate[2]': 'coverImage'
+    }
+  })
   return response.data
 }
 

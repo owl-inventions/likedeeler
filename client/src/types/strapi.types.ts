@@ -14,6 +14,47 @@ export type Image = {
   nane: string
 }
 
+export type Training = {
+  id: number;
+  start: string;
+  end: string;
+  dayOfTheWeek: string;
+  location: {
+    id: number;
+    latitude: number;
+    longitude: number;
+  };
+};
+
+export type DepartmentAttributes = {
+  title: string;
+  description: string;
+  link: string;
+  coverImage: {
+    data: StrapiImage
+  };
+  trainings: Training[];
+  createdAt: string;
+  updatedAt: string;
+  publishedAt: string;
+};
+
+export type DepartmentData = {
+  id: number;
+  attributes: DepartmentAttributes;
+};
+
+export type StrapiResponseDepartments = {
+  data: DepartmentData[];
+  meta: {
+    pagination: {
+      start: number;
+      limit: number;
+      total: number;
+    };
+  };
+};
+
 export type StrapiImage = {
   id: number
   attributes: {

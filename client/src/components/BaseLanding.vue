@@ -2,9 +2,14 @@
 import { defineComponent, onBeforeUnmount, onMounted } from 'vue'
 import { ref } from 'vue'
 import CardAbout from '@/components/CardAbout.vue'
-import { getFaqItems, listAllRecentArticles } from '@/services/strapi.service'
+import {getFaqItems, listAllDepartments, listAllRecentArticles} from '@/services/strapi.service'
 import CardNews from '@/components/CardNews.vue'
-import { type StrapiResponseFaq, type ArticleAsIdRef } from '@/types/strapi.types'
+import {
+  type StrapiResponseFaq,
+  type ArticleAsIdRef,
+  type StrapiResponseDepartments,
+  type DepartmentData
+} from '@/types/strapi.types'
 
 export default defineComponent({
   name: 'BaseLanding',
@@ -19,6 +24,11 @@ export default defineComponent({
 
     const articles = ref<ArticleAsIdRef[]>([])
     const faqItems = ref<StrapiResponseFaq[]>([])
+    const departments = ref<DepartmentData[]>([])
+
+    listAllDepartments().then((data) => {
+      departments.value = data.data
+    })
 
     listAllRecentArticles().then((data) => {
       articles.value = data
@@ -65,7 +75,8 @@ export default defineComponent({
     return {
       text,
       articles,
-      faqItems
+      faqItems,
+      departments
     }
   },
   mounted() {
@@ -124,22 +135,7 @@ export default defineComponent({
           You can find us at the University of Rostock and HSG Uni Rostock e.V.
         </p>
         <div class="flex flex-wrap justify-center space-x-0 sm:space-x-4 mt-8">
-          <CardAbout
-              imageSrc="/img/join-us.webp"
-              imageAlt="Join Us"
-              title="HSG Uni Rostock e.V."
-              description="Become a part of our vibrant community. We welcome everyone who shares our passion for Jugger. Whether you are a beginner or an experienced player, you will find a place here."
-              buttonText="@HSG"
-              button-link="//hsgunirostock.de/trainingszeiten/#Jugger"
-          />
-          <CardAbout
-              imageSrc="/img/join-us-uni.webp"
-              imageAlt="Join Us"
-              title="University Rostock"
-              description="Our university Jugger program offers students a unique opportunity to engage in this exciting sport. Join us for regular training sessions, tournaments, and social events."
-              buttonText="@University"
-              button-link="//hochschulsport.uni-rostock.de/cgi/webpage.cgi?kursinfo=F1AAADD354"
-          />
+          <CardAbout v-for="department in departments" :key="department.id" :department="department" />
         </div>
       </div>
     </section>
