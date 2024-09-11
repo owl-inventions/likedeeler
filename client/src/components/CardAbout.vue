@@ -35,7 +35,7 @@
 <script lang="ts">
 import { defineComponent, type PropType } from 'vue'
 import { type DepartmentData } from '@/types/strapi.types'
-import { formatTime } from '@/utils/timeFormat'
+import { formatStrapiTimestamp } from '@/utils/timeFormat'
 
 export default defineComponent({
   name: 'CardAbout',
@@ -47,7 +47,7 @@ export default defineComponent({
   },
   setup() {
     return {
-      formatTime
+      formatTime: formatStrapiTimestamp
     }
   }
 })
