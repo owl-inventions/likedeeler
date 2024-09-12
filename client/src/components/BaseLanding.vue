@@ -7,7 +7,6 @@ import CardNews from '@/components/CardNews.vue'
 import {
   type StrapiResponseFaq,
   type ArticleAsIdRef,
-  type StrapiResponseDepartments,
   type DepartmentData
 } from '@/types/strapi.types'
 
