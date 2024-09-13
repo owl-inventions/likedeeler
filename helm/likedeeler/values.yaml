@@ -44,7 +44,7 @@ client:
   service:
     name: http
     port: 80
-    healthEndpoint: /health
+    healthEndpoint: /healthz
 
   ingress:
     enabled: true

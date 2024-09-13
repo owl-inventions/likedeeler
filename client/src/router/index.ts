@@ -10,10 +10,6 @@ const routes = [
         component: () => import('@/components/BaseLanding.vue')
       },
       {
-        path: '/health',
-        component: () => import('@/components/HealthCheck.vue')
-      },
-      {
         path: '/privacy',
         component: () => import('@/components/InfoPrivacy.vue')
       },

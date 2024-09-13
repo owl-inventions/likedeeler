@@ -10,11 +10,6 @@ import type {
 } from '@/types/strapi.types'
 import type { AxiosResponse } from 'axios'
 
-export async function getHealthCheck(): Promise<any> {
-  const response = await strapiClient.get('/health')
-  return response.data
-}
-
 export async function listAllDepartments(): Promise<StrapiResponseDepartments> {
   const response = await strapiClient.get('/api/departments', {
     params: {
