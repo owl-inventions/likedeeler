@@ -20,7 +20,7 @@
       <span class="text-gray-500">{{ article?.date }}</span>
       <h2 class="card-title">{{ article?.title }}</h2>
       <p>{{ article?.description }}</p>
-      <p class="text-neutral-content" v-html="article?.content"></p>
+      <p class="text-neutral-content mb-4" v-html="article?.content"></p>
     </div>
     <div v-if="isNew" class="new-indicator bg-primary text-primary-content">New</div>
   </a>
