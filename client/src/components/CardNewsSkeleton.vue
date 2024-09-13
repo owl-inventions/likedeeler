@@ -1,12 +1,12 @@
 <!-- CardNewsSkeleton.vue -->
 <template>
   <div class="card card-compact w-72 bg-neutral relative rounded-xl">
-    <div class="skeleton-image"></div>
+    <div class="skeleton-image bg-base-100"></div>
     <div class="card-body rounded-b text-left">
-      <div class="skeleton-text skeleton-title"></div>
-      <div class="skeleton-text skeleton-date"></div>
-      <div class="skeleton-text skeleton-description"></div>
-      <div class="skeleton-text skeleton-content"></div>
+      <div class="skeleton-text skeleton-title bg-base-100"></div>
+      <div class="skeleton-text skeleton-date bg-base-100"></div>
+      <div class="skeleton-text skeleton-description bg-base-100"></div>
+      <div class="skeleton-text skeleton-content bg-base-100"></div>
     </div>
   </div>
 </template>
@@ -23,10 +23,8 @@ export default defineComponent({
 .skeleton-image {
   width: 100%;
   padding-top: 56.25%; /* 16:9 aspect ratio */
-  background-color: #e0e0e0;
 }
 .skeleton-text {
-  background-color: #e0e0e0;
   height: 1em;
   margin: 0.5em 0;
 }
@@ -41,6 +39,6 @@ export default defineComponent({
 }
 .skeleton-content {
   width: 100%;
-  height: 5em;
+  height: 10em;
 }
 </style>
