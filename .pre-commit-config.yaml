@@ -20,4 +20,4 @@ repos:
           json,
         ]
         additional_dependencies: []
-        files: ^client/
+        files: client/
