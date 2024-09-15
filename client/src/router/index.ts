@@ -6,6 +6,7 @@ const routes = [
     component: () => import('@/views/BaseView.vue'),
     children: [
       {
+        name: 'home',
         path: '',
         component: () => import('@/components/BaseLanding.vue')
       },
@@ -39,7 +40,14 @@ const routes = [
 
 const router = createRouter({
   history: createWebHistory(),
-  routes
+  routes,
+  scrollBehavior (to, from, savedPosition) {
+    if (savedPosition) {
+      return savedPosition
+    } else {
+      return { top: 0 }
+    }
+  }
 })
 
 export default router

@@ -3,9 +3,9 @@
     <CardNewsSkeleton />
     <div class="progress-indicator"></div>
   </div>
-  <router-link
+  <RouterLink
     v-else
-    :to="{ name: 'article-detail', params: { slug: article?.slug } }"
+    :to="`/articles/${article?.slug}`"
     class="card card-compact w-72 bg-neutral hover:bg-accent relative rounded-xl no-underline hover:shadow-2xl duration-300"
   >
     <CardNewsBadge :text="article?.category" additionalClasses="badge-outline" />
@@ -23,7 +23,7 @@
       <p class="text-neutral-content mb-4" v-html="article?.content"></p>
     </div>
     <div v-if="isNew" class="new-indicator bg-primary text-primary-content">New</div>
-  </router-link>
+  </RouterLink>
 </template>
 
 <script lang="ts">

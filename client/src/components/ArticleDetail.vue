@@ -46,7 +46,7 @@
 
 <script lang="ts">
 import { defineComponent, ref, onMounted } from 'vue'
-import { useRoute } from 'vue-router'
+import { onBeforeRouteUpdate } from 'vue-router'
 import { marked } from 'marked'
 import type { Article, ArticleAsIdRef } from '@/types/strapi.types'
 import type { GalleryImage } from '@/types/galleryImage.types'
@@ -73,8 +73,12 @@ export default defineComponent({
     const galleryImages = ref<GalleryImage[]>([])
     const relatedArticles = ref<ArticleAsIdRef[]>([])
 
-    onMounted(() => {
-      getArticleBySlug(props.slug).then((data) => {
+    const unmountGallery = () => {
+      galleryImages.value = []
+    }
+
+    const fetchArticleData = (slug: string) => {
+      getArticleBySlug(slug).then((data) => {
         if (data) {
           data.content = <string>marked(data.content)
           article.value = data
@@ -88,7 +92,18 @@ export default defineComponent({
           }))
         }
       })
+    }
 
+    onBeforeRouteUpdate((to, from, next) => {
+      window.scroll(0, 0)
+      unmountGallery()
+      const slug = to.params.slug as string
+      fetchArticleData(slug)
+      next()
+    })
+
+    onMounted(() => {
+      fetchArticleData(props.slug)
       listAllRecentArticles().then((data) => {
         relatedArticles.value = data
       })

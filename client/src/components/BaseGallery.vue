@@ -1,51 +1,73 @@
-<!-- client/src/components/BaseGallery.vue -->
 <template>
   <div :id="galleryID" class="carousel carousel-center w-full rounded-xl">
-    <div v-for="(image, key) in imagesData" :key="key" class="carousel-item">
-      <a
-        :href="image.largeURL"
-        :data-pswp-width="image.width"
-        :data-pswp-height="image.height"
-        target="_blank"
-        rel="noreferrer"
-      >
-        <img :src="image.thumbnailURL" alt="" />
-      </a>
+    <div v-for="(image, key) in images" :key="key" class="carousel-item">
+        <a
+          :key="image.largeURL"
+          :href="image.largeURL"
+          :data-pswp-width="image.width"
+          :data-pswp-height="image.height"
+        >
+          <img :src="image.thumbnailURL" :alt="image.largeURL" />
+        </a>
     </div>
   </div>
 </template>
 
-<script>
+<script lang="ts">
+import {defineComponent, onMounted, onUnmounted, type PropType, ref, watch} from 'vue'
 import PhotoSwipeLightbox from 'photoswipe/lightbox'
 import 'photoswipe/style.css'
 
-export default {
+type GalleryImage = {
+  largeURL: string
+  thumbnailURL: string
+  width: number
+  height: number
+}
+
+export default defineComponent({
   name: 'BaseGallery',
   props: {
-    galleryID: String,
-    images: Array
-  },
-  setup(props) {
-    return {
-      imagesData: props.images
+    galleryID: {
+      type: String,
+      required: true
+    },
+    images: {
+      type: Array as PropType<GalleryImage[]>,
+      required: true
     }
   },
-  mounted() {
-    if (!this.lightbox) {
-      this.lightbox = new PhotoSwipeLightbox({
-        gallery: '#' + this.$props.galleryID,
+  setup(props) {
+    const lightbox = ref<PhotoSwipeLightbox | null>(null)
+
+    const initLightbox = () => {
+      if (lightbox.value) {
+        lightbox.value.destroy()
+      }
+      lightbox.value = new PhotoSwipeLightbox({
+        gallery: '#' + props.galleryID,
         children: 'a',
         pswpModule: () => import('photoswipe')
       })
-      this.lightbox.init()
+      lightbox.value.init()
     }
-  },
-  unmounted() {
-    if (this.lightbox) {
-      this.lightbox.destroy()
-      this.lightbox = null
-    }
-  },
-  methods: {}
-}
+
+    watch(() => props.images, () => {
+      initLightbox()
+    })
+
+    onMounted(() => {
+      initLightbox()
+    })
+
+    onUnmounted(() => {
+      if (lightbox.value) {
+        lightbox.value.destroy()
+        lightbox.value = null
+      }
+    })
+
+    return {}
+  }
+})
 </script>

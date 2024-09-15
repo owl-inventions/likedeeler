@@ -2,8 +2,8 @@
   <footer class="footer p-10 text-neutral-content bg-base-300 flex-grow">
     <div>
       <span class="footer-title">Links</span>
-      <a href="/impressum" class="link link-hover">Impressum</a>
-      <a href="/privacy" class="link link-hover">Privacy Policy</a>
+      <RouterLink to="/impressum" class="link link-hover">Impressum</RouterLink>
+      <RouterLink to="/privacy" class="link link-hover">Privacy Policy</RouterLink>
       <a href="https://status.jnhssg.de/status/likedeeler" class="link link-hover">System Status</a>
     </div>
     <div class="divider"></div>
@@ -17,10 +17,14 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue'
+import { RouterLink } from 'vue-router'
 import { VERSION } from '@/configurations/general.conf'
 
 export default defineComponent({
   name: 'BaseFooter',
+  components: {
+    RouterLink
+  },
   setup() {
     return {
       VERSION
