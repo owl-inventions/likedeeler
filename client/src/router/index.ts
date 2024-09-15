@@ -28,6 +28,7 @@ const routes = [
         component: () => import('@/components/ArticleOverview.vue')
       },
       {
+        name: 'article-detail',
         path: ':slug',
         component: () => import('@/components/ArticleDetail.vue'),
         props: true
