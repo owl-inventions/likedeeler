@@ -11,6 +11,13 @@ repos:
         name: Format Client
         entry: bash -c 'cd client && npm run format'
         language: node
-        types: [javascript]
+        types: [
+          javascript,
+          ts,
+          vue,
+          css,
+          scss,
+          json,
+        ]
         additional_dependencies: []
         files: ^client/
