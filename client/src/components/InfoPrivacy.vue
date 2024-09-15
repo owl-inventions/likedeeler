@@ -2,14 +2,18 @@
   <div class="container mx-auto px-5 py-5">
     <div class="text-sm breadcrumbs mb-4">
       <ul>
-        <li><a href="/">Home</a></li>
         <li>
-          <a href="/privacy">Privacy</a>
+          <RouterLink to="/">Home</RouterLink>
+        </li>
+        <li>
+          <RouterLink to="/privacy">Privacy</RouterLink>
         </li>
       </ul>
     </div>
     <h1 class="text-3xl font-bold mb-8">Privacy</h1>
-    <div v-html="privacyContent" class="prose"></div>
+    <div class="card bg-neutral text-gray-500">
+      <div v-html="privacyContent" class="prose card-body"></div>
+    </div>
   </div>
 </template>
 
@@ -25,8 +29,8 @@ export default defineComponent({
 <p>Stand: 7. September 2024</p></section><section class="mb-8">
         <h2 class="text-2xl font-semibold mb-4">Inhaltsübersicht</h2>
  <ul class="index"><li><a class="index-link" href="#m3">Verantwortlicher</a></li><li><a class="index-link" href="#mOverview">Übersicht der Verarbeitungen</a></li><li><a class="index-link" href="#m2427">Maßgebliche Rechtsgrundlagen</a></li><li><a class="index-link" href="#m27">Sicherheitsmaßnahmen</a></li><li><a class="index-link" href="#m25">Übermittlung von personenbezogenen Daten</a></li><li><a class="index-link" href="#m24">Internationale Datentransfers</a></li><li><a class="index-link" href="#m12">Allgemeine Informationen zur Datenspeicherung und Löschung</a></li><li><a class="index-link" href="#m10">Rechte der betroffenen Personen</a></li><li><a class="index-link" href="#m354">Wahrnehmung von Aufgaben nach Satzung oder Geschäftsordnung</a></li><li><a class="index-link" href="#m225">Bereitstellung des Onlineangebots und Webhosting</a></li><li><a class="index-link" href="#m134">Einsatz von Cookies</a></li><li><a class="index-link" href="#m104">Blogs und Publikationsmedien</a></li><li><a class="index-link" href="#m182">Kontakt- und Anfrageverwaltung</a></li><li><a class="index-link" href="#m17">Newsletter und elektronische Benachrichtigungen</a></li><li><a class="index-link" href="#m263">Webanalyse, Monitoring und Optimierung</a></li><li><a class="index-link" href="#m136">Präsenzen in sozialen Netzwerken (Social Media)</a></li><li><a class="index-link" href="#m328">Plug-ins und eingebettete Funktionen sowie Inhalte</a></li></ul></section><section class="mb-8">
-        <h2 class="text-2xl font-semibold mb-4" id="m3">Verantwortlicher</h2><p>Vorname, Name / Firma<br>Straße, Hausnr.<br>PLZ, Ort, Land</p>
-<p>E-Mail-Adresse: <a href="mailto:vorname.name@beispielsdomain.eu">vorname.name@beispielsdomain.eu</a></p>
+        <h2 class="text-2xl font-semibold mb-4" id="m3">Verantwortlicher</h2><p>Hasselberg, Jan<br>Hermannstr. 28<br>18055 Rostock</p>
+<p>E-Mail-Adresse: <a href="mailto:hasselberg.jan@icloud.com">hasselberg.jan@icloud.com</a></p>
 
 </section><section class="mb-8">
         <h2 class="text-2xl font-semibold mb-4" id="mOverview">Übersicht der Verarbeitungen</h2><p>Die nachfolgende Übersicht fasst die Arten der verarbeiteten Daten und die Zwecke ihrer Verarbeitung zusammen und verweist auf die betroffenen Personen.</p><h3>Arten der verarbeiteten Daten</h3>

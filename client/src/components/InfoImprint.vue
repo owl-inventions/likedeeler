@@ -2,14 +2,18 @@
   <div class="container mx-auto px-5 py-5">
     <div class="text-sm breadcrumbs mb-4">
       <ul>
-        <li><a href="/">Home</a></li>
         <li>
-          <a href="/impressum">Impressum</a>
+          <RouterLink to="/">Home</RouterLink>
+        </li>
+        <li>
+          <RouterLink to="/impressum">Impressum</RouterLink>
         </li>
       </ul>
     </div>
     <h1 class="text-3xl font-bold mb-8">Privacy</h1>
-    <div v-html="impressumContent" class="prose"></div>
+    <div class="card bg-neutral text-gray-500">
+      <div v-html="impressumContent" class="prose card-body"></div>
+    </div>
   </div>
 </template>
 
