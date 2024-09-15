@@ -27,6 +27,19 @@ spec:
         - name: {{ .Chart.Name }}
           image: "{{ .Values.cms.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
+          livenessProbe:
+            httpGet:
+              path: {{ .Values.cms.service.healthEndpoint }}
+              port: {{ .Values.cms.service.port }}
+          readinessProbe:
+            httpGet:
+              path: {{ .Values.cms.service.healthEndpoint }}
+              port: {{ .Values.cms.service.port }}
+          startupProbe:
+            httpGet:
+              path: {{ .Values.cms.service.healthEndpoint }}
+              port: {{ .Values.cms.service.port }}
+            failureThreshold: 30
           ports:
             - name: {{ .Values.cms.service.name }}
               containerPort: {{ .Values.cms.service.port }}
