@@ -115,7 +115,7 @@ export default defineComponent({
         </h1>
       </div>
     </section>
-    <section id="about" class="py-20 md:px-10 sm:px-2">
+    <section id="about" class="py-12 md:px-10 sm:px-2">
       <div class="container mx-auto text-center">
         <h2 class="text-3xl font-bold mb-8 italic">Who We Are</h2>
         <p class="text-lg">
