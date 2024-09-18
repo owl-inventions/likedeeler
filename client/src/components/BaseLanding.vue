@@ -115,25 +115,15 @@ export default defineComponent({
         </h1>
       </div>
     </section>
-    <section id="news" class="py-20 px-5 sm:px-10">
+    <section id="about" class="py-20 md:px-10 sm:px-2">
       <div class="container mx-auto text-center">
-        <h2 class="text-3xl font-bold mb-8">Latest News</h2>
-        <div class="carousel w-full rounded-box">
-          <div class="carousel-item" v-for="article in articles">
-            <CardNews :id="article.id" />
-          </div>
-        </div>
-      </div>
-    </section>
-    <section id="about" class="py-20 bg-base-300 px-5 sm:px-10">
-      <div class="container mx-auto text-center">
-        <h2 class="text-3xl font-bold mb-8">Who We Are</h2>
+        <h2 class="text-3xl font-bold mb-8 italic">Who We Are</h2>
         <p class="text-lg">
           Likedeeler is a vibrant and well-established community in Rostock, passionately promoting
           the sport of Jugger. We are a diverse group of players, ranging from beginners to seasoned
           professionals. You can find us at the University of Rostock and HSG Uni Rostock e.V.
         </p>
-        <div class="flex flex-wrap justify-center space-x-0 sm:space-x-4 mt-8">
+        <div class="flex flex-wrap justify-center space-x-0 md:space-x-12 mt-8">
           <CardAbout
             v-for="department in departments"
             :key="department.id"
@@ -142,10 +132,20 @@ export default defineComponent({
         </div>
       </div>
     </section>
+    <section id="news" class="py-20 px-5 md:px-10 bg-base-300">
+      <div class="container mx-auto text-center">
+        <h2 class="text-3xl font-bold mb-8 italic">Latest News</h2>
+        <div class="carousel w-full rounded-box">
+          <div class="carousel-item" v-for="article in articles">
+            <CardNews :id="article.id" />
+          </div>
+        </div>
+      </div>
+    </section>
     <!-- New About Jugger section -->
-    <section id="about-jugger" class="py-20 px-5 sm:px-10">
+    <section id="about-jugger" class="py-20 px-5 md:px-10 sm:px-2">
       <div class="container mx-auto text-center p-2">
-        <h2 class="text-3xl font-bold mb-8">FAQ</h2>
+        <h2 class="text-3xl font-bold mb-8 italic">FAQ</h2>
         <p class="mb-12">
           Hey there! If you’re new to Jugger or curious about joining the Likedeeler team in
           Rostock, we’re here to help. Below are some common questions we get from newcomers—if you
@@ -167,18 +167,18 @@ export default defineComponent({
         </div>
       </div>
     </section>
-    <section id="events" class="py-20 bg-base-300 px-5 sm:px-10">
+    <section id="events" class="py-20 bg-base-300 px-5 md:px-10 sm:px-2">
       <div class="container mx-auto text-center">
-        <h2 class="text-3xl font-bold mb-8">Upcoming Events</h2>
+        <h2 class="text-3xl font-bold mb-8 italic">Upcoming Events</h2>
         <p class="text-lg">
           Stay up to date with our latest events, tournaments, and training sessions. Follow us on
           Instagram for the most recent updates.
         </p>
       </div>
     </section>
-    <section id="contact" class="py-20 px-5 sm:px-10">
+    <section id="contact" class="py-20 px-2 md:px-10">
       <div class="container mx-auto text-center">
-        <h2 class="text-3xl font-bold mb-8">Contact Us</h2>
+        <h2 class="text-3xl font-bold mb-8 italic">Contact Us</h2>
         <!-- Contact form or details go here -->
         <a
           href="https://www.instagram.com/likedeeler_rostock/"
