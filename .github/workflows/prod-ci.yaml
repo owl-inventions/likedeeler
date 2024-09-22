@@ -51,8 +51,8 @@ jobs:
     uses: ./.github/workflows/sub-deploy.yml
     with:
       namespace: likedeeler
-      cmsHost: cms.likedeeler.kube.jnhssg.de,cms.likedeeler.kube.jugger-rostock.de
-      clientHost: client.likedeeler.kube.jnhssg.de,jugger-rostock.de
+      cmsHost: cms.jugger-rostock.de
+      clientHost: jugger-rostock.de
       tag: ${{ needs.get_version.outputs.version }}
       values: helm/prod.values.yaml
       release: likedeeler-prod
