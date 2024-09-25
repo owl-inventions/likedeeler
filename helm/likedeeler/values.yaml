@@ -2,8 +2,6 @@
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 
-replicaCount: 1
-
 nameOverride: ""
 fullnameOverride: ""
 
@@ -36,6 +34,9 @@ ingress:
   enabled: true
 
 client:
+
+  replicaCount: 1
+
   image:
     repository: registry.jnhssg.de/likedeeler-client
     pullPolicy: IfNotPresent
@@ -57,6 +58,8 @@ client:
       memory: 32Mi
 
 cms:
+
+  replicaCount: 1
 
   resources:
     limits:

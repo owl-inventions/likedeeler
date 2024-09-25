@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: {{ include "likedeeler.fullname" . }}-client
 spec:
-  replicas: {{ .Values.replicaCount }}
+  replicas: {{ .Values.cms.replicaCount }}
   strategy:
     type: RollingUpdate
     rollingUpdate:

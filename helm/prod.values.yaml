@@ -1,4 +1,9 @@
+client:
+  replicaCount: 2
+
+
 cms:
+  replicaCount: 2
   config:
     databaseName: likedeeler-strapi-prod
     awsBucket: likedeeler-strapi-prod
