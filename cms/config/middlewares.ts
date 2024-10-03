@@ -18,10 +18,7 @@ export default ({ env }) => [
             "'self'",
             "data:",
             "blob:",
-            "dl.airtable.com",
-            "https://d1v5z1j7v7z1j.cloudfront.net",
-            "https://d2wplaacghaca4.cloudfront.net",
-            "https://d384izg7dl1mko.cloudfront.net"
+            env('CLOUDFRONT_BASE_URL'),
           ],
         },
       },
