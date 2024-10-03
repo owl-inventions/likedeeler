@@ -24,7 +24,7 @@ on:
 
 jobs:
   publish-image:
-    runs-on: ARM64
+    runs-on: self-hosted
     container:
       image: catthehacker/ubuntu:act-22.04
     steps:

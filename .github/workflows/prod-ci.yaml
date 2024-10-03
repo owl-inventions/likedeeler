@@ -24,7 +24,7 @@ jobs:
     needs:
       - get_version
     secrets: inherit
-    uses: ./.github/workflows/sub-publish-client-image.yml
+    uses: ./.github/workflows/sub-publish-image.yml
     with:
       tag: ${{ needs.get_version.outputs.version }}
       app: likedeeler-client
@@ -35,7 +35,7 @@ jobs:
     needs:
       - get_version
     secrets: inherit
-    uses: ./.github/workflows/sub-publish-cms-image.yml
+    uses: ./.github/workflows/sub-publish-image.yml
     with:
       tag: ${{ needs.get_version.outputs.version }}
       app: likedeeler-cms
