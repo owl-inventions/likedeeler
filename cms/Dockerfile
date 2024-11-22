@@ -1,6 +1,6 @@
 # Docker file inspired from https://docs.strapi.io/dev-docs/installation/docker#production-dockerfile
 
-FROM registry.jnhssg.de/owl-inventions/base-images/strapi:v1.0.0 AS build
+FROM registry.jnhssg.de/owl-inventions/base-images/strapi:v1.0.1 AS build
 ARG NODE_ENV=production
 
 ENV NODE_ENV=${NODE_ENV}
