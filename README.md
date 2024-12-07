@@ -1,7 +1,7 @@
 ![Staging CI](https://github.com/owl-inventions/likedeeler/actions/workflows/staging-ci.yaml/badge.svg)
 ![Production CI](https://github.com/owl-inventions/likedeeler/actions/workflows/prod-ci.yaml/badge.svg)
 
-# Likedeeler Blog to share ✨ and 🗞️  and as ⚓️ for newcomers.
+# Likedeeler Blog to share ✨ and 🗞️  and as ⚓️ for newcomers/learners.
 
 📚 https://jnhssg.de/blog/2024-09-08
 
